@@ -1,0 +1,42 @@
+# First, specify the types that will be used
+enum Const {
+  "const"
+}
+
+value Table {
+  col: int;
+  row: int;
+  groups: int;
+}
+
+value Empty;
+
+# Next, specify the input/output of the synthesized program
+program Morpheus(Table) -> Table;
+
+# Finally, specify the production rules
+func empty: Empty -> Empty;
+
+
+func group_by: Table r -> Table a, Const b {
+  row(r) == row(a);
+  col(r) == col(a);
+  groups(r) < groups(a);
+}
+
+func count: Table r -> Table a {
+  row(r) <= row(a);
+  col(r) <= col(a) + 1;
+  groups(r) <= groups(a);
+}
+
+
+
+
+
+
+
+#Hard constraints
+predicate order_restriction(group_by, count);
+
+
