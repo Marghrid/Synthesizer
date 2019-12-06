@@ -36,6 +36,10 @@ func count: Table r -> Table a {
   groups(r) <= groups(a);
 }
 
+func top_n: Table r -> Table a, Const b, Const c {
+  row(r) <= row(a);
+}
+
 
 
 
@@ -43,6 +47,15 @@ func count: Table r -> Table a {
 
 
 #Hard constraints
-predicate order_restriction(group_by, summarise);
-predicate order_restriction(group_by, count);
+predicate enforce_sequence(summarise, group_by); # summarize => group_by
+predicate enforce_sequence(count, group_by); # count => group_by
+# group_by => summarize or count
+
+
+
+predicate order_restriction(top_n, count);
+predicate order_restriction(top_n, summarise);
+# top_n => count or summarize
+
+
 

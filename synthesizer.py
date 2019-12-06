@@ -57,6 +57,8 @@ def quotezise(string):
 
 
 def eq_r(actual, expect):
+    if build_incomplete_tab(actual) != build_incomplete_tab(expect):
+        return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
     return tab1 == tab2
@@ -142,23 +144,6 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting count...')
             raise GeneralError()
 
-    def eval_select(self, node, args):
-
-        if len(args[1]) == 1:
-            args[1] = "(`" + args[1][0] + "`)"
-
-        ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% select(c{cols})'.format(
-                   ret_df=ret_df_name, table=args[0], cols=args[1])
-        try:
-            ret_val = robjects.r(_script)
-            return ret_df_name
-        except:
-            print(robjects.r(args[0]))
-            print(_script)
-            logger.error('Error in interpreting select...')
-            raise GeneralError()
-
     def eval_group_by(self, node, args):
         cols = ''
         for i in args[1]:
@@ -204,6 +189,18 @@ class RInterpreter(PostOrderInterpreter):
         except:
             logger.error('Error in interpreting mutate...')
             raise GeneralError()
+
+    def eval_top_n(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- {table} %>% top_n({number}, {col}) %>% arrange(desc({col}))'.format(
+                  ret_df=ret_df_name, table=args[0], number=args[1], col=args[2])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting top_n...')
+            raise GeneralError()
+
 
     def apply_row(self, val):
         df = val
@@ -257,7 +254,7 @@ class Evaluator:
             elif str(prod).find("group_by") != -1:
                 n_cols = tab.n_cols
                 cols = [i for i in range(n_cols)]
-                for i in range(1, min(n_cols+1, 4)):
+                for i in range(1, min(n_cols+1, 2)):
                     for combination in itertools.combinations(cols, i):
                         cnsts = [tuple([c + 1 for c in combination])]
                         res = self.interpreter.eval_group_by(None, [table] + cnsts)
@@ -269,7 +266,7 @@ class Evaluator:
                 group_vars = list(group_vars)
                 for i in range(n_cols):
                     if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
-                        for op in ["max", "min", "mean", "sum"]:
+                        for op in ["max", "min", "mean", "sum", "median"]:
                             res = self.interpreter.eval_summarise(None, [table, op, i+1])
                             yield res, [op, i+1]
             elif str(prod).find("count") != -1:
@@ -291,14 +288,22 @@ class Evaluator:
                             yield res, cnsts
                 for i in range(1, min(len(colindexes) + 1, 4)):
                     for combination in itertools.combinations(colindexes, i):
-                        for op in ["max", "sum", "mean", "min"]:
+                        for op in ["max", "sum", "mean", "min", "median"]:
                             cnsts = [get_fresh_col(), op, tuple([tab.columns[c].name for c in combination])]
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
                             yield res, cnsts
                 for op in ["n"]:
-                    cnsts = cnsts = [get_fresh_col(), op, tuple()]
+                    cnsts = [get_fresh_col(), op, tuple()]
                     res = self.interpreter.eval_mutate(None, [table] + cnsts)
                     yield res, cnsts
+            elif str(prod).find("top_n") != -1:
+                for i in range(tab.n_cols):
+                    if tab.columns[i].type == "numeric":
+                        for j in range(min(12, tab.n_rows), 9, -1):
+                            cnsts = [j, tab.columns[i].name]
+                            res = self.interpreter.eval_top_n(None, [table] + cnsts)
+                            yield res, cnsts
+
 
     def eval_rows(self, table):
         return self.interpreter.apply_row(table)
@@ -318,6 +323,7 @@ def main():
     parser.add_argument('-l', '--length', type=int)
     parser.add_argument('-d', '--depth', type=int)
     parser.add_argument('-t', '--tyrellpath', type=str)
+    parser.add_argument('-m', '--plotmax', type=float)
     args = parser.parse_args()
     loc_val = args.length
     depth = args.depth
@@ -328,6 +334,7 @@ def main():
     # This is required by Ruben.
     init_tbl('input0', input0)
     init_tbl('output', output)
+    build_tab('output').max_input = args.plotmax
 
     logger.info('Parsing Spec...')
     spec = S.parse_file(args.tyrellpath)
@@ -363,6 +370,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('INFO')
+    logger.setLevel('DEBUG')
     main()
 

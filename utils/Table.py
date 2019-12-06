@@ -10,6 +10,7 @@ class Table:
     structure = 0
     elements = 0
     types = 0
+    last_norm = 0
     statistics = {"cols_avg": 0, "cols_max": 0, "cols": 0}
 
     def __init__(self, n_rows, n_cols, col_types, actual_table, col_names = None):
@@ -17,6 +18,7 @@ class Table:
         self.n_cols = n_cols
         self.col_types = col_types
         self.columns = []
+        self.max_input = 0
         if actual_table is None:
             self.parse2(col_types, col_names)
         else:
@@ -114,23 +116,17 @@ class Table:
             return False
 
         # Compare types
-        if sorted(self.col_types) != sorted(other.col_types):
-            return False
+        #if sorted(self.col_types) != sorted(other.col_types):
+        #    return False
 
         # Match each column accordingly (we assume relation between values are preserved)
-        other_columns = other.columns
-        self_columns = self.columns
-        for col1 in self_columns:
-            match = False
-            for col2 in other_columns:
-                if col1.matches(col2):
-                    match = True
-                    other_columns.remove(col2)
-                    break
-            if not match:
-                return False
+        other_column = other.columns[1]
+        self_column = self.columns[1]
 
-        return True
+        if other_column.matches(self_column, other.max_input):
+            Table.last_norm = other_column.norm
+            return True
+        return False
 
 
     def maximum(self):
@@ -217,13 +213,12 @@ class Column:
             i = 0
         return min(lst)
 
-    def matches(self, other):
+    def matches(self, other, maximum):
         if self.type == "float":
             if other.type == "float":
-                sorted(self.values) == sorted(other.values)
-                a1 = np.array(sorted(self.values))
-                a2 = np.array(sorted(other.values))
-                self.norm = LA.norm(np.subtract(a1/(max(a1) + 1), a2/(max(a1) + 1)), ord=1)
+                a1 = np.array(self.values)
+                a2 = np.array(other.values)
+                self.norm = LA.norm(np.subtract(a1/maximum, a2/maximum), ord=1)
                 return self.norm <= 0.10 * len(a1)
             else:
                 self.norm = 0

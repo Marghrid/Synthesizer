@@ -51,7 +51,7 @@ class Synthesizer(ABC):
                     logger.debug(
                         'Program accepted after {} attempts'.format(Synthesizer._num_attempts))
                     logger.info("Attempts " + str(Synthesizer._num_attempts))
-                    logger.info("Found program " + str(prog))
+                    logger.info("Found program " + str(prog) + " with score " + str(self.table.last_norm))
                     prog = self._enumerator.next()
                     #return prog
                 else:

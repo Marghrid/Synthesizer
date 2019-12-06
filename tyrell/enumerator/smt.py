@@ -221,6 +221,7 @@ class SmtEnumerator(FromIteratorEnumerator):
         self.createFunctionConstraints()
         self.createLeafConstraints()
         self.createChildrenConstraints()
+        self.allDifferent()
 
         #self.z3_solver.check()
         #self.model = self.z3_solver.model()
@@ -324,6 +325,15 @@ class SmtEnumerator(FromIteratorEnumerator):
                         else:
                             self.z3_solver.add(Implies(self.variables[x] == p1.id,
                                                        self.variables[n.children[y].id - 1] == empty.id))
+
+    def allDifferent(self):
+        empty = next(filter(lambda p: str(p).find('Empty') != -1, self.productions))
+        empty_id = WrapProduction.id
+        for i in range(len(self.variables)):
+            var1 = self.variables[i]
+            for j in range(i+1, len(self.variables)):
+                var2 = self.variables[j]
+                self.z3_solver.add(Implies(var1 == var2, var1 == empty_id))
 
     def blockModel(self):
         assert(self.model is not None)
@@ -441,24 +451,42 @@ class SmtEnumerator(FromIteratorEnumerator):
         for prod in order_restrictions:
             self.optimizer.mk_is_parent_subtree(prod, order_restrictions[prod])
 
+    def _resolve_enforce_sequence(self, enforce_sequence):
+        for prod in enforce_sequence:
+            self.optimizer.mk_is_child(prod, enforce_sequence[prod])
 
 
     def resolve_predicates(self):
         try:
             order_restrictions = {}
+            enforce_sequence = {}
             for pred in self.tyrell_spec.predicates():
                 if pred.name == 'occurs':
                     self._resolve_occurs_predicate(pred)
                 elif pred.name == 'is_parent':
                     self._resolve_is_parent_predicate(pred)
-                elif pred.name == 'order_restriction':
+                elif pred.name == 'enforce_sequence':
                     prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
                     prod1 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[1])]
-                    if prod0 not in order_restrictions:
-                        order_restrictions[prod0] = [prod1]
+                    if prod1 not in order_restrictions:
+                        order_restrictions[prod1] = [prod0]
                     else:
-                        order_restrictions[prod0] += [prod1]
+                        order_restrictions[prod1] += [prod0]
+
+                    if prod0 not in enforce_sequence:
+                        enforce_sequence[prod0] = [prod1]
+                    else:
+                        enforce_sequence[prod0] += [prod1]
+
+                elif pred.name == "order_restriction":
+                    prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
+                    prod1 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[1])]
+                    if prod0 not in enforce_sequence:
+                        enforce_sequence[prod0] = [prod1]
+                    else:
+                        enforce_sequence[prod0] += [prod1]
             self._resolve_order_restriction(order_restrictions)
+            self._resolve_enforce_sequence(enforce_sequence)
         except (KeyError, ValueError) as e:
             msg = 'Failed to resolve predicates. {}'.format(e)
             raise RuntimeError(msg) from None

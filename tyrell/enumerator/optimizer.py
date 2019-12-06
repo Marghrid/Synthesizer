@@ -106,6 +106,20 @@ class Optimizer:
                     ctr = Or(ctr, Implies(self.variables[x] == child_prod.id, self.variables[self.nodes[x].parent.id - 1] == parent.id))
             self.solver.add(ctr)
 
+    def mk_is_child(self, parent_prod, child_prods):
+        # this is wrong for k > 1
+        i = 0
+        self.solver.add(self.variables[len(self.nodes)-1] != parent_prod.id)
+        for x in range(1, len(self.nodes)):
+            # FIXME: improve empty integration
+            ctr = None
+            for child in child_prods:
+                if ctr is None:
+                    ctr = Implies(self.variables[self.nodes[x].parent.id - 1] == parent_prod.id, self.variables[x] == child.id)
+                else:
+                    ctr = Or(ctr, Implies(self.variables[self.nodes[x].parent.id - 1] == parent_prod.id, self.variables[x] == child.id))
+            self.solver.add(ctr)
+
 
     def mk_is_parent(self, parent, child, weight=None):
         '''children production will have the parent production with probability weight'''
