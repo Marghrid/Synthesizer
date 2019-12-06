@@ -18,6 +18,7 @@ sdist/
 var/
 wheels/
 venv/
+benchmarks/input_tables/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
