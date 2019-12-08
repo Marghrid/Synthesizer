@@ -1,0 +1,1460 @@
+R[write to console]: 
+Attaching package: ‘dplyr’
+
+
+R[write to console]: The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+
+R[write to console]: The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+R[write to console]: 
+Attaching package: ‘compare’
+
+
+R[write to console]: The following object is masked from ‘package:base’:
+
+    isTRUE
+
+
+[info] Parsing Spec...
+[info] Parsing succeeded
+[info] Building synthesizer...
+[info] Synthesizing programs...
+[info] Attempts 8
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 5), 5, Number) with score 0
+[info] Attempts 16
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 5), 5, Total) with score 0
+[info] Attempts 24
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 5), 5, Number) with score 0
+[info] Attempts 40
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 5), 5, Number) with score 0
+[info] Attempts 48
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 5), 5, Total) with score 0
+[info] Attempts 56
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 5), 5, Number) with score 0
+[info] Attempts 64
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 5), 5, Total) with score 0
+[info] Attempts 72
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 5), 5, Number) with score 0
+[info] Attempts 80
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 5), 5, Total) with score 0
+[info] Attempts 88
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 6), 5, Number) with score 0
+[info] Attempts 96
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 6), 5, HP) with score 0
+[info] Attempts 104
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 6), 5, Number) with score 0
+[info] Attempts 112
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 6), 5, HP) with score 0
+[info] Attempts 120
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 6), 5, Number) with score 0
+[info] Attempts 128
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 6), 5, HP) with score 0
+[info] Attempts 136
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 6), 5, Number) with score 0
+[info] Attempts 144
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 6), 5, HP) with score 0
+[info] Attempts 152
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 6), 5, Number) with score 0
+[info] Attempts 160
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 6), 5, HP) with score 0
+[info] Attempts 168
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 7), 5, Number) with score 0
+[info] Attempts 176
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 7), 5, Attack) with score 0
+[info] Attempts 184
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 7), 5, Number) with score 0
+[info] Attempts 200
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 7), 5, Number) with score 0
+[info] Attempts 208
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 216
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 7), 5, Number) with score 0
+[info] Attempts 224
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 232
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 7), 5, Number) with score 0
+[info] Attempts 240
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 7), 5, Attack) with score 0
+[info] Attempts 248
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 8), 5, Number) with score 0
+[info] Attempts 256
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 8), 5, Defense) with score 0
+[info] Attempts 264
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 8), 5, Number) with score 0
+[info] Attempts 280
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 8), 5, Number) with score 0
+[info] Attempts 288
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 296
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 8), 5, Number) with score 0
+[info] Attempts 304
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 312
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 8), 5, Number) with score 0
+[info] Attempts 320
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 8), 5, Defense) with score 0
+[info] Attempts 328
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 9), 5, Number) with score 0
+[info] Attempts 336
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 344
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 9), 5, Number) with score 0
+[info] Attempts 360
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 9), 5, Number) with score 0
+[info] Attempts 368
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 376
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 9), 5, Number) with score 0
+[info] Attempts 384
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 392
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 9), 5, Number) with score 0
+[info] Attempts 400
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 408
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 10), 5, Number) with score 0
+[info] Attempts 424
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 10), 5, Number) with score 0
+[info] Attempts 432
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 440
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 10), 5, Number) with score 0
+[info] Attempts 448
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 456
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 10), 5, Number) with score 0
+[info] Attempts 464
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 472
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 10), 5, Number) with score 0
+[info] Attempts 480
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 488
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 11), 5, Number) with score 0
+[info] Attempts 504
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 11), 5, Number) with score 0
+[info] Attempts 520
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 11), 5, Number) with score 0
+[info] Attempts 528
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 536
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 11), 5, Number) with score 0
+[info] Attempts 544
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 552
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 11), 5, Number) with score 0
+[info] Attempts 560
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 11), 5, Speed) with score 0
+[info] Attempts 568
+[info] Found program top_n(summarise(group_by(@param0, (1,)), max, 12), 5, Number) with score 0
+[info] Attempts 584
+[info] Found program top_n(summarise(group_by(@param0, (1,)), min, 12), 5, Number) with score 0
+[info] Attempts 600
+[info] Found program top_n(summarise(group_by(@param0, (1,)), mean, 12), 5, Number) with score 0
+[info] Attempts 616
+[info] Found program top_n(summarise(group_by(@param0, (1,)), sum, 12), 5, Number) with score 0
+[info] Attempts 632
+[info] Found program top_n(summarise(group_by(@param0, (1,)), median, 12), 5, Number) with score 0
+[info] Attempts 648
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 1), 5, Number) with score 0
+[info] Attempts 656
+[info] Found program top_n(summarise(group_by(@param0, (3,)), min, 1), 5, Number) with score 0
+[info] Attempts 664
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 1), 5, Number) with score 0
+[info] Attempts 672
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 1), 5, Number) with score 0
+[info] Attempts 680
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 1), 5, Number) with score 0
+[info] Attempts 688
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 5), 5, Total) with score 0
+[info] Attempts 696
+[info] Found program top_n(summarise(group_by(@param0, (3,)), min, 5), 5, Total) with score 0
+[info] Attempts 704
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 5), 5, Total) with score 0
+[info] Attempts 712
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 5), 5, Total) with score 0
+[info] Attempts 720
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 5), 5, Total) with score 0
+[info] Attempts 728
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 6), 5, HP) with score 0
+[info] Attempts 736
+[info] Found program top_n(summarise(group_by(@param0, (3,)), min, 6), 5, HP) with score 0
+[info] Attempts 744
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 6), 5, HP) with score 0
+[info] Attempts 752
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 6), 5, HP) with score 0
+[info] Attempts 776
+[info] Found program top_n(summarise(group_by(@param0, (3,)), min, 7), 5, Attack) with score 0
+[info] Attempts 784
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 792
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 800
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 7), 5, Attack) with score 0
+[info] Attempts 808
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 8), 5, Defense) with score 0
+[info] Attempts 824
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 832
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 848
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 864
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 872
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 880
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 896
+[info] Found program top_n(summarise(group_by(@param0, (3,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 904
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 912
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 920
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 928
+[info] Found program top_n(summarise(group_by(@param0, (3,)), max, 11), 5, Speed) with score 0
+[info] Attempts 944
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 952
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 960
+[info] Found program top_n(summarise(group_by(@param0, (3,)), median, 11), 5, Speed) with score 0
+[info] Attempts 984
+[info] Found program top_n(summarise(group_by(@param0, (3,)), mean, 12), 5, Generation) with score 0
+[info] Attempts 992
+[info] Found program top_n(summarise(group_by(@param0, (3,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 1008
+[info] Found program top_n(summarise(group_by(@param0, (4,)), max, 1), 5, Number) with score 0
+[info] Attempts 1016
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 1), 5, Number) with score 0
+[info] Attempts 1024
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 1), 5, Number) with score 0
+[info] Attempts 1032
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 1), 5, Number) with score 0
+[info] Attempts 1040
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 1), 5, Number) with score 0
+[info] Attempts 1056
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 5), 5, Total) with score 0
+[info] Attempts 1064
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 5), 5, Total) with score 0
+[info] Attempts 1072
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 5), 5, Total) with score 0
+[info] Attempts 1080
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 5), 5, Total) with score 0
+[info] Attempts 1088
+[info] Found program top_n(summarise(group_by(@param0, (4,)), max, 6), 5, HP) with score 0
+[info] Attempts 1096
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 6), 5, HP) with score 0
+[info] Attempts 1104
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 6), 5, HP) with score 0
+[info] Attempts 1112
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 6), 5, HP) with score 0
+[info] Attempts 1120
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 6), 5, HP) with score 0
+[info] Attempts 1136
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 7), 5, Attack) with score 0
+[info] Attempts 1144
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 1152
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 1160
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 7), 5, Attack) with score 0
+[info] Attempts 1168
+[info] Found program top_n(summarise(group_by(@param0, (4,)), max, 8), 5, Defense) with score 0
+[info] Attempts 1176
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 8), 5, Defense) with score 0
+[info] Attempts 1184
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 1192
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 1200
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 8), 5, Defense) with score 0
+[info] Attempts 1208
+[info] Found program top_n(summarise(group_by(@param0, (4,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1216
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1224
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1232
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1240
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1264
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 1272
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 1280
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 1288
+[info] Found program top_n(summarise(group_by(@param0, (4,)), max, 11), 5, Speed) with score 0
+[info] Attempts 1296
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 11), 5, Speed) with score 0
+[info] Attempts 1304
+[info] Found program top_n(summarise(group_by(@param0, (4,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 1312
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 1320
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 11), 5, Speed) with score 0
+[info] Attempts 1336
+[info] Found program top_n(summarise(group_by(@param0, (4,)), min, 12), 5, Generation) with score 0
+[info] Attempts 1352
+[info] Found program top_n(summarise(group_by(@param0, (4,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 1360
+[info] Found program top_n(summarise(group_by(@param0, (4,)), median, 12), 5, Generation) with score 0
+[info] Attempts 1368
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 1), 5, Total) with score 0
+[info] Attempts 1376
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 1), 5, Number) with score 0
+[info] Attempts 1384
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 1), 5, Total) with score 0
+[info] Attempts 1392
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 1), 5, Number) with score 0
+[info] Attempts 1400
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 1), 5, Total) with score 0
+[info] Attempts 1408
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 1), 5, Number) with score 0
+[info] Attempts 1416
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 1), 5, Total) with score 0
+[info] Attempts 1424
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 1), 5, Number) with score 0
+[info] Attempts 1432
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 1), 5, Total) with score 0
+[info] Attempts 1440
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 1), 5, Number) with score 0
+[info] Attempts 1448
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 6), 5, Total) with score 0
+[info] Attempts 1456
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 6), 5, HP) with score 0
+[info] Attempts 1464
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 6), 5, Total) with score 0
+[info] Attempts 1472
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 6), 5, HP) with score 0
+[info] Attempts 1480
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 6), 5, Total) with score 0
+[info] Attempts 1488
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 6), 5, HP) with score 0
+[info] Attempts 1496
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 6), 5, Total) with score 0
+[info] Attempts 1504
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 6), 5, HP) with score 0
+[info] Attempts 1512
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 6), 5, Total) with score 0
+[info] Attempts 1520
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 6), 5, HP) with score 0
+[info] Attempts 1528
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 7), 5, Total) with score 0
+[info] Attempts 1544
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 7), 5, Total) with score 0
+[info] Attempts 1552
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 7), 5, Attack) with score 0
+[info] Attempts 1560
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 7), 5, Total) with score 0
+[info] Attempts 1568
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 1576
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 7), 5, Total) with score 0
+[info] Attempts 1584
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 1592
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 7), 5, Total) with score 0
+[info] Attempts 1608
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 8), 5, Total) with score 0
+[info] Attempts 1616
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 8), 5, Defense) with score 0
+[info] Attempts 1624
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 8), 5, Total) with score 0
+[info] Attempts 1632
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 8), 5, Defense) with score 0
+[info] Attempts 1640
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 8), 5, Total) with score 0
+[info] Attempts 1648
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 1656
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 8), 5, Total) with score 0
+[info] Attempts 1664
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 1672
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 8), 5, Total) with score 0
+[info] Attempts 1680
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 8), 5, Defense) with score 0
+[info] Attempts 1688
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 9), 5, Total) with score 0
+[info] Attempts 1704
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 9), 5, Total) with score 0
+[info] Attempts 1712
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1720
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 9), 5, Total) with score 0
+[info] Attempts 1736
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 9), 5, Total) with score 0
+[info] Attempts 1744
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 1752
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 9), 5, Total) with score 0
+[info] Attempts 1768
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 10), 5, Total) with score 0
+[info] Attempts 1784
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 10), 5, Total) with score 0
+[info] Attempts 1800
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 10), 5, Total) with score 0
+[info] Attempts 1808
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 1816
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 10), 5, Total) with score 0
+[info] Attempts 1824
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 1832
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 10), 5, Total) with score 0
+[info] Attempts 1840
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 1848
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 11), 5, Total) with score 0
+[info] Attempts 1864
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 11), 5, Total) with score 0
+[info] Attempts 1872
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 11), 5, Speed) with score 0
+[info] Attempts 1880
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 11), 5, Total) with score 0
+[info] Attempts 1888
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 1896
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 11), 5, Total) with score 0
+[info] Attempts 1904
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 1912
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 11), 5, Total) with score 0
+[info] Attempts 1920
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 11), 5, Speed) with score 0
+[info] Attempts 1928
+[info] Found program top_n(summarise(group_by(@param0, (5,)), max, 12), 5, Total) with score 0
+[info] Attempts 1944
+[info] Found program top_n(summarise(group_by(@param0, (5,)), min, 12), 5, Total) with score 0
+[info] Attempts 1960
+[info] Found program top_n(summarise(group_by(@param0, (5,)), mean, 12), 5, Total) with score 0
+[info] Attempts 1976
+[info] Found program top_n(summarise(group_by(@param0, (5,)), sum, 12), 5, Total) with score 0
+[info] Attempts 1992
+[info] Found program top_n(summarise(group_by(@param0, (5,)), median, 12), 5, Total) with score 0
+[info] Attempts 2008
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 1), 5, HP) with score 0
+[info] Attempts 2016
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 1), 5, Number) with score 0
+[info] Attempts 2024
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 1), 5, HP) with score 0
+[info] Attempts 2032
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 1), 5, Number) with score 0
+[info] Attempts 2040
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 1), 5, HP) with score 0
+[info] Attempts 2048
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 1), 5, Number) with score 0
+[info] Attempts 2056
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 1), 5, HP) with score 0
+[info] Attempts 2064
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 1), 5, Number) with score 0
+[info] Attempts 2072
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 1), 5, HP) with score 0
+[info] Attempts 2080
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 1), 5, Number) with score 0
+[info] Attempts 2088
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 5), 5, HP) with score 0
+[info] Attempts 2104
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 5), 5, HP) with score 0
+[info] Attempts 2120
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 5), 5, HP) with score 0
+[info] Attempts 2128
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 5), 5, Total) with score 0
+[info] Attempts 2136
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 5), 5, HP) with score 0
+[info] Attempts 2144
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 5), 5, Total) with score 0
+[info] Attempts 2152
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 5), 5, HP) with score 0
+[info] Attempts 2168
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 7), 5, HP) with score 0
+[info] Attempts 2176
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 7), 5, Attack) with score 0
+[info] Attempts 2184
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 7), 5, HP) with score 0
+[info] Attempts 2192
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 7), 5, Attack) with score 0
+[info] Attempts 2200
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 7), 5, HP) with score 0
+[info] Attempts 2208
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 2216
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 7), 5, HP) with score 0
+[info] Attempts 2224
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 2232
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 7), 5, HP) with score 0
+[info] Attempts 2248
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 8), 5, HP) with score 0
+[info] Attempts 2256
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 8), 5, Defense) with score 0
+[info] Attempts 2264
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 8), 5, HP) with score 0
+[info] Attempts 2272
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 8), 5, Defense) with score 0
+[info] Attempts 2280
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 8), 5, HP) with score 0
+[info] Attempts 2288
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 2296
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 8), 5, HP) with score 0
+[info] Attempts 2304
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 2312
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 8), 5, HP) with score 0
+[info] Attempts 2328
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 9), 5, HP) with score 0
+[info] Attempts 2336
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 2344
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 9), 5, HP) with score 0
+[info] Attempts 2352
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 2360
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 9), 5, HP) with score 0
+[info] Attempts 2368
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 2376
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 9), 5, HP) with score 0
+[info] Attempts 2384
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 2392
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 9), 5, HP) with score 0
+[info] Attempts 2400
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 2408
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 10), 5, HP) with score 0
+[info] Attempts 2424
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 10), 5, HP) with score 0
+[info] Attempts 2432
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 2440
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 10), 5, HP) with score 0
+[info] Attempts 2448
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 2456
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 10), 5, HP) with score 0
+[info] Attempts 2464
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 2472
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 10), 5, HP) with score 0
+[info] Attempts 2480
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 2488
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 11), 5, HP) with score 0
+[info] Attempts 2504
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 11), 5, HP) with score 0
+[info] Attempts 2520
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 11), 5, HP) with score 0
+[info] Attempts 2528
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 2536
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 11), 5, HP) with score 0
+[info] Attempts 2544
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 2552
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 11), 5, HP) with score 0
+[info] Attempts 2560
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 11), 5, Speed) with score 0
+[info] Attempts 2568
+[info] Found program top_n(summarise(group_by(@param0, (6,)), max, 12), 5, HP) with score 0
+[info] Attempts 2584
+[info] Found program top_n(summarise(group_by(@param0, (6,)), min, 12), 5, HP) with score 0
+[info] Attempts 2600
+[info] Found program top_n(summarise(group_by(@param0, (6,)), mean, 12), 5, HP) with score 0
+[info] Attempts 2616
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 12), 5, HP) with score 0
+[info] Attempts 2624
+[info] Found program top_n(summarise(group_by(@param0, (6,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 2632
+[info] Found program top_n(summarise(group_by(@param0, (6,)), median, 12), 5, HP) with score 0
+[info] Attempts 2648
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 1), 5, Attack) with score 0
+[info] Attempts 2656
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 1), 5, Number) with score 0
+[info] Attempts 2664
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 1), 5, Attack) with score 0
+[info] Attempts 2672
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 1), 5, Number) with score 0
+[info] Attempts 2680
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 1), 5, Attack) with score 0
+[info] Attempts 2688
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 1), 5, Number) with score 0
+[info] Attempts 2696
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 1), 5, Attack) with score 0
+[info] Attempts 2704
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 1), 5, Number) with score 0
+[info] Attempts 2712
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 1), 5, Attack) with score 0
+[info] Attempts 2720
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 1), 5, Number) with score 0
+[info] Attempts 2728
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 5), 5, Attack) with score 0
+[info] Attempts 2744
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 5), 5, Attack) with score 0
+[info] Attempts 2752
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 5), 5, Total) with score 0
+[info] Attempts 2760
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 5), 5, Attack) with score 0
+[info] Attempts 2768
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 5), 5, Total) with score 0
+[info] Attempts 2776
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 5), 5, Attack) with score 0
+[info] Attempts 2784
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 5), 5, Total) with score 0
+[info] Attempts 2792
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 5), 5, Attack) with score 0
+[info] Attempts 2800
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 5), 5, Total) with score 0
+[info] Attempts 2808
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 6), 5, Attack) with score 0
+[info] Attempts 2816
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 6), 5, HP) with score 0
+[info] Attempts 2824
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 6), 5, Attack) with score 0
+[info] Attempts 2832
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 6), 5, HP) with score 0
+[info] Attempts 2840
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 6), 5, Attack) with score 0
+[info] Attempts 2848
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 6), 5, HP) with score 0
+[info] Attempts 2856
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 6), 5, Attack) with score 0
+[info] Attempts 2864
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 6), 5, HP) with score 0
+[info] Attempts 2872
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 6), 5, Attack) with score 0
+[info] Attempts 2880
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 6), 5, HP) with score 0
+[info] Attempts 2888
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 8), 5, Attack) with score 0
+[info] Attempts 2896
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 8), 5, Defense) with score 0
+[info] Attempts 2904
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 8), 5, Attack) with score 0
+[info] Attempts 2912
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 8), 5, Defense) with score 0
+[info] Attempts 2920
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 8), 5, Attack) with score 0
+[info] Attempts 2928
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 2936
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 8), 5, Attack) with score 0
+[info] Attempts 2944
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 2952
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 8), 5, Attack) with score 0
+[info] Attempts 2960
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 8), 5, Defense) with score 0
+[info] Attempts 2968
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 9), 5, Attack) with score 0
+[info] Attempts 2984
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 9), 5, Attack) with score 0
+[info] Attempts 2992
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3000
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 9), 5, Attack) with score 0
+[info] Attempts 3008
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3016
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 9), 5, Attack) with score 0
+[info] Attempts 3024
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3032
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 9), 5, Attack) with score 0
+[info] Attempts 3040
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3048
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 10), 5, Attack) with score 0
+[info] Attempts 3064
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 10), 5, Attack) with score 0
+[info] Attempts 3072
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 3080
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 10), 5, Attack) with score 0
+[info] Attempts 3088
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 3096
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 10), 5, Attack) with score 0
+[info] Attempts 3104
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 3112
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 10), 5, Attack) with score 0
+[info] Attempts 3128
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 11), 5, Attack) with score 0
+[info] Attempts 3144
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 11), 5, Attack) with score 0
+[info] Attempts 3152
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 11), 5, Speed) with score 0
+[info] Attempts 3160
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 11), 5, Attack) with score 0
+[info] Attempts 3168
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 3176
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 11), 5, Attack) with score 0
+[info] Attempts 3184
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 3192
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 11), 5, Attack) with score 0
+[info] Attempts 3200
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 11), 5, Speed) with score 0
+[info] Attempts 3208
+[info] Found program top_n(summarise(group_by(@param0, (7,)), max, 12), 5, Attack) with score 0
+[info] Attempts 3224
+[info] Found program top_n(summarise(group_by(@param0, (7,)), min, 12), 5, Attack) with score 0
+[info] Attempts 3240
+[info] Found program top_n(summarise(group_by(@param0, (7,)), mean, 12), 5, Attack) with score 0
+[info] Attempts 3256
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 12), 5, Attack) with score 0
+[info] Attempts 3264
+[info] Found program top_n(summarise(group_by(@param0, (7,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 3272
+[info] Found program top_n(summarise(group_by(@param0, (7,)), median, 12), 5, Attack) with score 0
+[info] Attempts 3288
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 1), 5, Defense) with score 0
+[info] Attempts 3296
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 1), 5, Number) with score 0
+[info] Attempts 3304
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 1), 5, Defense) with score 0
+[info] Attempts 3312
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 1), 5, Number) with score 0
+[info] Attempts 3320
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 1), 5, Defense) with score 0
+[info] Attempts 3328
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 1), 5, Number) with score 0
+[info] Attempts 3336
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 1), 5, Defense) with score 0
+[info] Attempts 3344
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 1), 5, Number) with score 0
+[info] Attempts 3352
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 1), 5, Defense) with score 0
+[info] Attempts 3360
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 1), 5, Number) with score 0
+[info] Attempts 3368
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 5), 5, Defense) with score 0
+[info] Attempts 3376
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 5), 5, Total) with score 0
+[info] Attempts 3384
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 5), 5, Defense) with score 0
+[info] Attempts 3392
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 5), 5, Total) with score 0
+[info] Attempts 3400
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 5), 5, Defense) with score 0
+[info] Attempts 3408
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 5), 5, Total) with score 0
+[info] Attempts 3416
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 5), 5, Defense) with score 0
+[info] Attempts 3424
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 5), 5, Total) with score 0
+[info] Attempts 3432
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 5), 5, Defense) with score 0
+[info] Attempts 3448
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 6), 5, Defense) with score 0
+[info] Attempts 3456
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 6), 5, HP) with score 0
+[info] Attempts 3464
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 6), 5, Defense) with score 0
+[info] Attempts 3480
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 6), 5, Defense) with score 0
+[info] Attempts 3488
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 6), 5, HP) with score 0
+[info] Attempts 3496
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 6), 5, Defense) with score 0
+[info] Attempts 3504
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 6), 5, HP) with score 0
+[info] Attempts 3512
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 6), 5, Defense) with score 0
+[info] Attempts 3520
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 6), 5, HP) with score 0
+[info] Attempts 3528
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 7), 5, Defense) with score 0
+[info] Attempts 3544
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 7), 5, Defense) with score 0
+[info] Attempts 3552
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 7), 5, Attack) with score 0
+[info] Attempts 3560
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 7), 5, Defense) with score 0
+[info] Attempts 3568
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 3576
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 7), 5, Defense) with score 0
+[info] Attempts 3584
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 3592
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 7), 5, Defense) with score 0
+[info] Attempts 3600
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 7), 5, Attack) with score 0
+[info] Attempts 3608
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 9), 5, Defense) with score 0
+[info] Attempts 3616
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3624
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 9), 5, Defense) with score 0
+[info] Attempts 3632
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3640
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 9), 5, Defense) with score 0
+[info] Attempts 3648
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3656
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 9), 5, Defense) with score 0
+[info] Attempts 3664
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 3672
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 9), 5, Defense) with score 0
+[info] Attempts 3688
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 10), 5, Defense) with score 0
+[info] Attempts 3704
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 10), 5, Defense) with score 0
+[info] Attempts 3712
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 3720
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 10), 5, Defense) with score 0
+[info] Attempts 3728
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 3736
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 10), 5, Defense) with score 0
+[info] Attempts 3744
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 3752
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 10), 5, Defense) with score 0
+[info] Attempts 3760
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 3768
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 11), 5, Defense) with score 0
+[info] Attempts 3784
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 11), 5, Defense) with score 0
+[info] Attempts 3792
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 11), 5, Speed) with score 0
+[info] Attempts 3800
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 11), 5, Defense) with score 0
+[info] Attempts 3808
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 3816
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 11), 5, Defense) with score 0
+[info] Attempts 3824
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 3832
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 11), 5, Defense) with score 0
+[info] Attempts 3840
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 11), 5, Speed) with score 0
+[info] Attempts 3848
+[info] Found program top_n(summarise(group_by(@param0, (8,)), max, 12), 5, Defense) with score 0
+[info] Attempts 3864
+[info] Found program top_n(summarise(group_by(@param0, (8,)), min, 12), 5, Defense) with score 0
+[info] Attempts 3880
+[info] Found program top_n(summarise(group_by(@param0, (8,)), mean, 12), 5, Defense) with score 0
+[info] Attempts 3896
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 12), 5, Defense) with score 0
+[info] Attempts 3904
+[info] Found program top_n(summarise(group_by(@param0, (8,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 3912
+[info] Found program top_n(summarise(group_by(@param0, (8,)), median, 12), 5, Defense) with score 0
+[info] Attempts 3928
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 1), 5, Sp_Atk) with score 0
+[info] Attempts 3936
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 1), 5, Number) with score 0
+[info] Attempts 3944
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 1), 5, Sp_Atk) with score 0
+[info] Attempts 3952
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 1), 5, Number) with score 0
+[info] Attempts 3960
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 1), 5, Sp_Atk) with score 0
+[info] Attempts 3968
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 1), 5, Number) with score 0
+[info] Attempts 3976
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 1), 5, Sp_Atk) with score 0
+[info] Attempts 3984
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 1), 5, Number) with score 0
+[info] Attempts 3992
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 1), 5, Sp_Atk) with score 0
+[info] Attempts 4000
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 1), 5, Number) with score 0
+[info] Attempts 4008
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 5), 5, Sp_Atk) with score 0
+[info] Attempts 4016
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 5), 5, Total) with score 0
+[info] Attempts 4024
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 5), 5, Sp_Atk) with score 0
+[info] Attempts 4032
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 5), 5, Total) with score 0
+[info] Attempts 4040
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 5), 5, Sp_Atk) with score 0
+[info] Attempts 4048
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 5), 5, Total) with score 0
+[info] Attempts 4056
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 5), 5, Sp_Atk) with score 0
+[info] Attempts 4064
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 5), 5, Total) with score 0
+[info] Attempts 4072
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 5), 5, Sp_Atk) with score 0
+[info] Attempts 4088
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 6), 5, Sp_Atk) with score 0
+[info] Attempts 4096
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 6), 5, HP) with score 0
+[info] Attempts 4104
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 6), 5, Sp_Atk) with score 0
+[info] Attempts 4112
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 6), 5, HP) with score 0
+[info] Attempts 4120
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 6), 5, Sp_Atk) with score 0
+[info] Attempts 4128
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 6), 5, HP) with score 0
+[info] Attempts 4136
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 6), 5, Sp_Atk) with score 0
+[info] Attempts 4144
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 6), 5, HP) with score 0
+[info] Attempts 4152
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 6), 5, Sp_Atk) with score 0
+[info] Attempts 4160
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 6), 5, HP) with score 0
+[info] Attempts 4168
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 7), 5, Sp_Atk) with score 0
+[info] Attempts 4176
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 7), 5, Attack) with score 0
+[info] Attempts 4184
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 7), 5, Sp_Atk) with score 0
+[info] Attempts 4192
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 7), 5, Attack) with score 0
+[info] Attempts 4200
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 7), 5, Sp_Atk) with score 0
+[info] Attempts 4208
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 4216
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 7), 5, Sp_Atk) with score 0
+[info] Attempts 4224
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 4232
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 7), 5, Sp_Atk) with score 0
+[info] Attempts 4240
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 7), 5, Attack) with score 0
+[info] Attempts 4248
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 8), 5, Sp_Atk) with score 0
+[info] Attempts 4256
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 8), 5, Defense) with score 0
+[info] Attempts 4264
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 8), 5, Sp_Atk) with score 0
+[info] Attempts 4280
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 8), 5, Sp_Atk) with score 0
+[info] Attempts 4296
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 8), 5, Sp_Atk) with score 0
+[info] Attempts 4304
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 4312
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 8), 5, Sp_Atk) with score 0
+[info] Attempts 4328
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 10), 5, Sp_Atk) with score 0
+[info] Attempts 4344
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 10), 5, Sp_Atk) with score 0
+[info] Attempts 4360
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 10), 5, Sp_Atk) with score 0
+[info] Attempts 4376
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 10), 5, Sp_Atk) with score 0
+[info] Attempts 4384
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 4392
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 10), 5, Sp_Atk) with score 0
+[info] Attempts 4408
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 11), 5, Sp_Atk) with score 0
+[info] Attempts 4424
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 11), 5, Sp_Atk) with score 0
+[info] Attempts 4432
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 11), 5, Speed) with score 0
+[info] Attempts 4440
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 11), 5, Sp_Atk) with score 0
+[info] Attempts 4448
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 4456
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 11), 5, Sp_Atk) with score 0
+[info] Attempts 4464
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 4472
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 11), 5, Sp_Atk) with score 0
+[info] Attempts 4480
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 11), 5, Speed) with score 0
+[info] Attempts 4488
+[info] Found program top_n(summarise(group_by(@param0, (9,)), max, 12), 5, Sp_Atk) with score 0
+[info] Attempts 4504
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 12), 5, Sp_Atk) with score 0
+[info] Attempts 4512
+[info] Found program top_n(summarise(group_by(@param0, (9,)), min, 12), 5, Generation) with score 0
+[info] Attempts 4520
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 12), 5, Sp_Atk) with score 0
+[info] Attempts 4528
+[info] Found program top_n(summarise(group_by(@param0, (9,)), mean, 12), 5, Generation) with score 0
+[info] Attempts 4536
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 12), 5, Sp_Atk) with score 0
+[info] Attempts 4544
+[info] Found program top_n(summarise(group_by(@param0, (9,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 4552
+[info] Found program top_n(summarise(group_by(@param0, (9,)), median, 12), 5, Sp_Atk) with score 0
+[info] Attempts 4568
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 1), 5, Sp_Def) with score 0
+[info] Attempts 4576
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 1), 5, Number) with score 0
+[info] Attempts 4584
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 1), 5, Sp_Def) with score 0
+[info] Attempts 4592
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 1), 5, Number) with score 0
+[info] Attempts 4600
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 1), 5, Sp_Def) with score 0
+[info] Attempts 4608
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 1), 5, Number) with score 0
+[info] Attempts 4616
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 1), 5, Sp_Def) with score 0
+[info] Attempts 4624
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 1), 5, Number) with score 0
+[info] Attempts 4632
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 1), 5, Sp_Def) with score 0
+[info] Attempts 4640
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 1), 5, Number) with score 0
+[info] Attempts 4648
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 5), 5, Sp_Def) with score 0
+[info] Attempts 4664
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 5), 5, Sp_Def) with score 0
+[info] Attempts 4672
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 5), 5, Total) with score 0
+[info] Attempts 4680
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 5), 5, Sp_Def) with score 0
+[info] Attempts 4688
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 5), 5, Total) with score 0
+[info] Attempts 4696
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 5), 5, Sp_Def) with score 0
+[info] Attempts 4704
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 5), 5, Total) with score 0
+[info] Attempts 4712
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 5), 5, Sp_Def) with score 0
+[info] Attempts 4728
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 6), 5, Sp_Def) with score 0
+[info] Attempts 4736
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 6), 5, HP) with score 0
+[info] Attempts 4744
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 6), 5, Sp_Def) with score 0
+[info] Attempts 4752
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 6), 5, HP) with score 0
+[info] Attempts 4760
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 6), 5, Sp_Def) with score 0
+[info] Attempts 4768
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 6), 5, HP) with score 0
+[info] Attempts 4776
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 6), 5, Sp_Def) with score 0
+[info] Attempts 4784
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 6), 5, HP) with score 0
+[info] Attempts 4792
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 6), 5, Sp_Def) with score 0
+[info] Attempts 4800
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 6), 5, HP) with score 0
+[info] Attempts 4808
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 7), 5, Sp_Def) with score 0
+[info] Attempts 4816
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 7), 5, Attack) with score 0
+[info] Attempts 4824
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 7), 5, Sp_Def) with score 0
+[info] Attempts 4832
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 7), 5, Attack) with score 0
+[info] Attempts 4840
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 7), 5, Sp_Def) with score 0
+[info] Attempts 4848
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 4856
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 7), 5, Sp_Def) with score 0
+[info] Attempts 4864
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 4872
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 7), 5, Sp_Def) with score 0
+[info] Attempts 4880
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 7), 5, Attack) with score 0
+[info] Attempts 4888
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 8), 5, Sp_Def) with score 0
+[info] Attempts 4896
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 8), 5, Defense) with score 0
+[info] Attempts 4904
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 8), 5, Sp_Def) with score 0
+[info] Attempts 4912
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 8), 5, Defense) with score 0
+[info] Attempts 4920
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 8), 5, Sp_Def) with score 0
+[info] Attempts 4928
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 4936
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 8), 5, Sp_Def) with score 0
+[info] Attempts 4944
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 4952
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 8), 5, Sp_Def) with score 0
+[info] Attempts 4960
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 8), 5, Defense) with score 0
+[info] Attempts 4968
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 9), 5, Sp_Def) with score 0
+[info] Attempts 4976
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 4984
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 9), 5, Sp_Def) with score 0
+[info] Attempts 4992
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5000
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 9), 5, Sp_Def) with score 0
+[info] Attempts 5008
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5016
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 9), 5, Sp_Def) with score 0
+[info] Attempts 5024
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5032
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 9), 5, Sp_Def) with score 0
+[info] Attempts 5040
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5048
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 11), 5, Sp_Def) with score 0
+[info] Attempts 5064
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 11), 5, Sp_Def) with score 0
+[info] Attempts 5072
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 11), 5, Speed) with score 0
+[info] Attempts 5080
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 11), 5, Sp_Def) with score 0
+[info] Attempts 5088
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 5096
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 11), 5, Sp_Def) with score 0
+[info] Attempts 5104
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 5112
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 11), 5, Sp_Def) with score 0
+[info] Attempts 5120
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 11), 5, Speed) with score 0
+[info] Attempts 5128
+[info] Found program top_n(summarise(group_by(@param0, (10,)), max, 12), 5, Sp_Def) with score 0
+[info] Attempts 5144
+[info] Found program top_n(summarise(group_by(@param0, (10,)), min, 12), 5, Sp_Def) with score 0
+[info] Attempts 5160
+[info] Found program top_n(summarise(group_by(@param0, (10,)), mean, 12), 5, Sp_Def) with score 0
+[info] Attempts 5176
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 12), 5, Sp_Def) with score 0
+[info] Attempts 5184
+[info] Found program top_n(summarise(group_by(@param0, (10,)), sum, 12), 5, Generation) with score 0
+[info] Attempts 5192
+[info] Found program top_n(summarise(group_by(@param0, (10,)), median, 12), 5, Sp_Def) with score 0
+[info] Attempts 5208
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 1), 5, Speed) with score 0
+[info] Attempts 5216
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 1), 5, Number) with score 0
+[info] Attempts 5224
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 1), 5, Speed) with score 0
+[info] Attempts 5232
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 1), 5, Number) with score 0
+[info] Attempts 5240
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 1), 5, Speed) with score 0
+[info] Attempts 5248
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 1), 5, Number) with score 0
+[info] Attempts 5256
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 1), 5, Speed) with score 0
+[info] Attempts 5264
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 1), 5, Number) with score 0
+[info] Attempts 5272
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 1), 5, Speed) with score 0
+[info] Attempts 5280
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 1), 5, Number) with score 0
+[info] Attempts 5288
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 5), 5, Speed) with score 0
+[info] Attempts 5296
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 5), 5, Total) with score 0
+[info] Attempts 5304
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 5), 5, Speed) with score 0
+[info] Attempts 5312
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 5), 5, Total) with score 0
+[info] Attempts 5320
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 5), 5, Speed) with score 0
+[info] Attempts 5336
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 5), 5, Speed) with score 0
+[info] Attempts 5344
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 5), 5, Total) with score 0
+[info] Attempts 5352
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 5), 5, Speed) with score 0
+[info] Attempts 5368
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 6), 5, Speed) with score 0
+[info] Attempts 5376
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 6), 5, HP) with score 0
+[info] Attempts 5384
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 6), 5, Speed) with score 0
+[info] Attempts 5400
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 6), 5, Speed) with score 0
+[info] Attempts 5408
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 6), 5, HP) with score 0
+[info] Attempts 5416
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 6), 5, Speed) with score 0
+[info] Attempts 5424
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 6), 5, HP) with score 0
+[info] Attempts 5432
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 6), 5, Speed) with score 0
+[info] Attempts 5448
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 7), 5, Speed) with score 0
+[info] Attempts 5456
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 7), 5, Attack) with score 0
+[info] Attempts 5464
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 7), 5, Speed) with score 0
+[info] Attempts 5480
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 7), 5, Speed) with score 0
+[info] Attempts 5488
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 5496
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 7), 5, Speed) with score 0
+[info] Attempts 5504
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 5512
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 7), 5, Speed) with score 0
+[info] Attempts 5520
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 7), 5, Attack) with score 0
+[info] Attempts 5528
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 8), 5, Speed) with score 0
+[info] Attempts 5536
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 8), 5, Defense) with score 0
+[info] Attempts 5544
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 8), 5, Speed) with score 0
+[info] Attempts 5560
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 8), 5, Speed) with score 0
+[info] Attempts 5568
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 5576
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 8), 5, Speed) with score 0
+[info] Attempts 5584
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 5592
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 8), 5, Speed) with score 0
+[info] Attempts 5600
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 8), 5, Defense) with score 0
+[info] Attempts 5608
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 9), 5, Speed) with score 0
+[info] Attempts 5624
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 9), 5, Speed) with score 0
+[info] Attempts 5632
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5640
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 9), 5, Speed) with score 0
+[info] Attempts 5648
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5656
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 9), 5, Speed) with score 0
+[info] Attempts 5664
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5672
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 9), 5, Speed) with score 0
+[info] Attempts 5680
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5688
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 10), 5, Speed) with score 0
+[info] Attempts 5696
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 10), 5, Sp_Def) with score 0
+[info] Attempts 5704
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 10), 5, Speed) with score 0
+[info] Attempts 5712
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 10), 5, Sp_Def) with score 0
+[info] Attempts 5720
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 10), 5, Speed) with score 0
+[info] Attempts 5728
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 5736
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 10), 5, Speed) with score 0
+[info] Attempts 5744
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 5752
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 10), 5, Speed) with score 0
+[info] Attempts 5760
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 10), 5, Sp_Def) with score 0
+[info] Attempts 5768
+[info] Found program top_n(summarise(group_by(@param0, (11,)), max, 12), 5, Speed) with score 0
+[info] Attempts 5784
+[info] Found program top_n(summarise(group_by(@param0, (11,)), min, 12), 5, Speed) with score 0
+[info] Attempts 5800
+[info] Found program top_n(summarise(group_by(@param0, (11,)), mean, 12), 5, Speed) with score 0
+[info] Attempts 5816
+[info] Found program top_n(summarise(group_by(@param0, (11,)), sum, 12), 5, Speed) with score 0
+[info] Attempts 5832
+[info] Found program top_n(summarise(group_by(@param0, (11,)), median, 12), 5, Speed) with score 0
+[info] Attempts 5842
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 1), 5, Generation) with score 0
+[info] Attempts 5844
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 1), 5, Number) with score 0
+[info] Attempts 5846
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 1), 5, Generation) with score 0
+[info] Attempts 5848
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 1), 5, Number) with score 0
+[info] Attempts 5850
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 1), 5, Generation) with score 0
+[info] Attempts 5852
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 1), 5, Number) with score 0
+[info] Attempts 5854
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 1), 5, Generation) with score 0
+[info] Attempts 5856
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 1), 5, Number) with score 0
+[info] Attempts 5858
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 1), 5, Generation) with score 0
+[info] Attempts 5860
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 1), 5, Number) with score 0
+[info] Attempts 5862
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 5), 5, Generation) with score 0
+[info] Attempts 5866
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 5), 5, Generation) with score 0
+[info] Attempts 5868
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 5), 5, Total) with score 0
+[info] Attempts 5870
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 5), 5, Generation) with score 0
+[info] Attempts 5872
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 5), 5, Total) with score 0
+[info] Attempts 5874
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 5), 5, Generation) with score 0
+[info] Attempts 5876
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 5), 5, Total) with score 0
+[info] Attempts 5878
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 5), 5, Generation) with score 0
+[info] Attempts 5880
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 5), 5, Total) with score 0
+[info] Attempts 5882
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 6), 5, Generation) with score 0
+[info] Attempts 5884
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 6), 5, HP) with score 0
+[info] Attempts 5886
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 6), 5, Generation) with score 0
+[info] Attempts 5888
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 6), 5, HP) with score 0
+[info] Attempts 5890
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 6), 5, Generation) with score 0
+[info] Attempts 5892
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 6), 5, HP) with score 0
+[info] Attempts 5894
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 6), 5, Generation) with score 0
+[info] Attempts 5896
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 6), 5, HP) with score 0
+[info] Attempts 5898
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 6), 5, Generation) with score 0
+[info] Attempts 5900
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 6), 5, HP) with score 0
+[info] Attempts 5902
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 7), 5, Generation) with score 0
+[info] Attempts 5904
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 7), 5, Attack) with score 0
+[info] Attempts 5906
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 7), 5, Generation) with score 0
+[info] Attempts 5910
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 7), 5, Generation) with score 0
+[info] Attempts 5912
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 7), 5, Attack) with score 0
+[info] Attempts 5914
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 7), 5, Generation) with score 0
+[info] Attempts 5916
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 7), 5, Attack) with score 0
+[info] Attempts 5918
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 7), 5, Generation) with score 0
+[info] Attempts 5920
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 7), 5, Attack) with score 0
+[info] Attempts 5922
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 8), 5, Generation) with score 0
+[info] Attempts 5924
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 8), 5, Defense) with score 0
+[info] Attempts 5926
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 8), 5, Generation) with score 0
+[info] Attempts 5930
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 8), 5, Generation) with score 0
+[info] Attempts 5932
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 8), 5, Defense) with score 0
+[info] Attempts 5934
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 8), 5, Generation) with score 0
+[info] Attempts 5936
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 8), 5, Defense) with score 0
+[info] Attempts 5938
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 8), 5, Generation) with score 0
+[info] Attempts 5940
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 8), 5, Defense) with score 0
+[info] Attempts 5942
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 9), 5, Generation) with score 0
+[info] Attempts 5944
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5946
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 9), 5, Generation) with score 0
+[info] Attempts 5950
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 9), 5, Generation) with score 0
+[info] Attempts 5952
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5954
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 9), 5, Generation) with score 0
+[info] Attempts 5956
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 9), 5, Sp_Atk) with score 0
+[info] Attempts 5958
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 9), 5, Generation) with score 0
+[info] Attempts 5962
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 10), 5, Generation) with score 0
+[info] Attempts 5964
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 10), 5, Sp_Def) with score 0
+[info] Attempts 5966
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 10), 5, Generation) with score 0
+[info] Attempts 5970
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 10), 5, Generation) with score 0
+[info] Attempts 5972
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 10), 5, Sp_Def) with score 0
+[info] Attempts 5974
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 10), 5, Generation) with score 0
+[info] Attempts 5976
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 10), 5, Sp_Def) with score 0
+[info] Attempts 5978
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 10), 5, Generation) with score 0
+[info] Attempts 5982
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 11), 5, Generation) with score 0
+[info] Attempts 5984
+[info] Found program top_n(summarise(group_by(@param0, (12,)), max, 11), 5, Speed) with score 0
+[info] Attempts 5986
+[info] Found program top_n(summarise(group_by(@param0, (12,)), min, 11), 5, Generation) with score 0
+[info] Attempts 5990
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 11), 5, Generation) with score 0
+[info] Attempts 5992
+[info] Found program top_n(summarise(group_by(@param0, (12,)), mean, 11), 5, Speed) with score 0
+[info] Attempts 5994
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 11), 5, Generation) with score 0
+[info] Attempts 5996
+[info] Found program top_n(summarise(group_by(@param0, (12,)), sum, 11), 5, Speed) with score 0
+[info] Attempts 5998
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 11), 5, Generation) with score 0
+[info] Attempts 6000
+[info] Found program top_n(summarise(group_by(@param0, (12,)), median, 11), 5, Speed) with score 0
+[info] Attempts 6008
+[info] Found program top_n(count(group_by(@param0, (1,))), 5, Number) with score 0
+[info] Attempts 6024
+[info] Found program top_n(count(group_by(@param0, (3,))), 5, n) with score 0
+[info] Attempts 6032
+[info] Found program top_n(count(group_by(@param0, (4,))), 5, n) with score 0
+[info] Attempts 6040
+[info] Found program top_n(count(group_by(@param0, (5,))), 5, Total) with score 0
+[info] Attempts 6048
+[info] Found program top_n(count(group_by(@param0, (5,))), 5, n) with score 0
+[info] Attempts 6056
+[info] Found program top_n(count(group_by(@param0, (6,))), 5, HP) with score 0
+[info] Attempts 6072
+[info] Found program top_n(count(group_by(@param0, (7,))), 5, Attack) with score 0
+[info] Attempts 6088
+[info] Found program top_n(count(group_by(@param0, (8,))), 5, Defense) with score 0
+[info] Attempts 6104
+[info] Found program top_n(count(group_by(@param0, (9,))), 5, Sp_Atk) with score 0
+[info] Attempts 6112
+[info] Found program top_n(count(group_by(@param0, (9,))), 5, n) with score 0
+[info] Attempts 6120
+[info] Found program top_n(count(group_by(@param0, (10,))), 5, Sp_Def) with score 0
+[info] Attempts 6128
+[info] Found program top_n(count(group_by(@param0, (10,))), 5, n) with score 0
+[info] Attempts 6136
+[info] Found program top_n(count(group_by(@param0, (11,))), 5, Speed) with score 0
+[info] Attempts 6144
+[info] Found program top_n(count(group_by(@param0, (11,))), 5, n) with score 0
+[info] Attempts 6146
+[info] Found program top_n(count(group_by(@param0, (12,))), 5, Generation) with score 0
+[info] Attempts 6148
+[info] Found program top_n(count(group_by(@param0, (12,))), 5, n) with score 0
+[info] Solution not found!

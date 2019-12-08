@@ -61,6 +61,9 @@ def eq_r(actual, expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
+    #if tab1 == tab2:
+    #    logger.info(tab1)
+    #    logger.info(tab2)
     return tab1 == tab2
 
 
@@ -135,7 +138,8 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_count(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- count({table})'.format(
+        _script = '{ret_df} <- summarize({table}, n=n())\n' \
+                  '{ret_df}$n <- as.numeric({ret_df}$n)'.format(
                    ret_df=ret_df_name, table=args[0])
         try:
             ret_val = robjects.r(_script)
@@ -370,6 +374,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('DEBUG')
+    logger.setLevel('INFO')
     main()
 

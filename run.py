@@ -1,4 +1,10 @@
 Q = {}
+Q[34] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q34-input-pokemon.csv -o benchmarks/noisy_output_tables/Q34-output-nn-pokemon.csv -l 3 -d 4 -t dsl.tyrell -m 145"
+Q[33] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q33-input-pokemon.csv -o benchmarks/noisy_output_tables/Q33-output-nn-pokemon.csv -l 2 -d 3 -t dsl.tyrell -m 195"
+Q[29] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q29-youtube-traffic.csv -o benchmarks/noisy_output_tables/Q29-youtube-traffic_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 535"
+Q[27] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q27-youtube-traffic.csv -o benchmarks/noisy_output_tables/Q27-youtube-traffic_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 5140"
+Q[26] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q26-youtube-traffic.csv -o benchmarks/noisy_output_tables/Q26-youtube-traffic_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 115"
+Q[21] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q21-crimes-in-boston.csv -o benchmarks/noisy_output_tables/Q21-cimes-in-boston_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 40500"
 Q[12] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q12-input-bikes.csv -o benchmarks/noisy_output_tables/Q12-output-nn-bikes.csv -l 2 -d 3 -t dsl.tyrell -m 815"
 Q[13] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q13-input-bikes.csv -o benchmarks/noisy_output_tables/Q13-output-nn-bikes.csv -l 2 -d 3 -t dsl.tyrell -m 40"
 Q[17] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q17-input-work.csv -o benchmarks/noisy_output_tables/Q17-output-nn-work.csv -l 2 -d 3 -t dsl.tyrell -m 250"
