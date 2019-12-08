@@ -10,13 +10,14 @@ import time
 
 
 logger = get_logger('tyrell.synthesizer')
-
+INF = 1000
 
 class Synthesizer(ABC):
 
     _enumerator: Enumerator
     _decider: Decider
     _num_attempts = 0
+    _num_solutions = 0
 
     def __init__(self, enumerator: Enumerator, decider: Decider):
         self._enumerator = enumerator
@@ -36,6 +37,7 @@ class Synthesizer(ABC):
         return self._decider
 
     def synthesize(self):
+        solution = (INF, "")
         '''
         A convenient method to enumerate ASTs until the result passes the analysis.
         Returns the synthesized program, or `None` if the synthesis failed.
@@ -52,6 +54,9 @@ class Synthesizer(ABC):
                         'Program accepted after {} attempts'.format(Synthesizer._num_attempts))
                     logger.info("Attempts " + str(Synthesizer._num_attempts))
                     logger.info("Found program " + str(prog) + " with score " + str(self.table.last_norm))
+                    Synthesizer._num_solutions += 1
+                    if solution[0] > self.table.last_norm:
+                        solution = (self.table.last_norm, str(prog))
                     prog = self._enumerator.next()
                     #return prog
                 else:
@@ -61,6 +66,9 @@ class Synthesizer(ABC):
                     prog = self._enumerator.next()
             except InterpreterError as e:
                 pass
+        logger.info("Number of attempts {}".format(Synthesizer._num_attempts))
+        logger.info("Number of solutions {}".format(Synthesizer._num_solutions))
+        logger.info("Selected solution {}".format(solution[1]))
         logger.debug(
             'Enumerator is exhausted after {} attempts'.format(Synthesizer._num_attempts))
         return None

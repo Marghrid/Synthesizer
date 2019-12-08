@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pandas
 import copy
 from numpy import linalg as LA
 import math
@@ -31,7 +32,10 @@ class Table:
         for i in range(self.n_cols):
             col = Column(col_types[i], col_names[i], i+1)
             for row in rows:
-                col.append(row.split(',')[i])
+                try:
+                    col.append(row.split(',')[i])
+                except:
+                    continue
             col.eval_elements()
             self.col_types[i] = col.type
             self.columns += [col]

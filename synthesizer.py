@@ -61,9 +61,9 @@ def eq_r(actual, expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
-    #if tab1 == tab2:
-    #    logger.info(tab1)
-    #    logger.info(tab2)
+    """if tab1 == tab2:
+        logger.info(tab1)
+        logger.info(tab2)"""
     return tab1 == tab2
 
 
@@ -247,6 +247,16 @@ class Evaluator:
         self.context = []
 
     def eval(self, tyrell_spec, prod, tables=None):
+        try:
+            gn = self.evaluate(tyrell_spec, prod, tables)
+            nxt = next(gn, None)
+            while nxt:
+                yield nxt
+                nxt = next(gn, None)
+        except:
+            return
+
+    def evaluate(self, tyrell_spec, prod, tables=None):
 
         if str(prod).find("param") != -1:
             yield 'input' + str(prod._param_id), []

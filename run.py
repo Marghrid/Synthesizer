@@ -1,4 +1,8 @@
 Q = {}
+Q[43] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q43-employee.csv -o benchmarks/noisy_output_tables/Q43-employee_nn-out.csv -l 2 -d 3 -t dsl.tyrell -m 3170"
+Q[42] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q42-employee.csv -o benchmarks/noisy_output_tables/Q42-employee_nn-out.csv -l 2 -d 3 -t dsl.tyrell -m 615"
+Q[38] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q38-airbnb-nyc.csv -o benchmarks/real_output_tables/Q38-airbnb-nyc_out.csv -l 3 -d 4 -t dsl.tyrell -m 360"
+Q[37] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q37-airbnb-nyc.csv -o benchmarks/noisy_output_tables/Q37-airbnb-nyc_nn-out.csv -l 2 -d 3 -t dsl.tyrell -m 175"
 Q[34] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q34-input-pokemon.csv -o benchmarks/noisy_output_tables/Q34-output-nn-pokemon.csv -l 3 -d 4 -t dsl.tyrell -m 145"
 Q[33] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q33-input-pokemon.csv -o benchmarks/noisy_output_tables/Q33-output-nn-pokemon.csv -l 2 -d 3 -t dsl.tyrell -m 195"
 Q[29] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q29-youtube-traffic.csv -o benchmarks/noisy_output_tables/Q29-youtube-traffic_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 535"

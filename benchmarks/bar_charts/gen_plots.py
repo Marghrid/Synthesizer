@@ -30,7 +30,7 @@ def tikz_template(plots, symbolic, n_bars, max_val):
             legend style={at={(0.5,-0.1.5)},
                     anchor=north,legend columns=-1},
             ]
-            \\addplot[fill=color1] coordinates {
+            \\addplot coordinates {
 PLOTS
             };
         \\end{axis}
