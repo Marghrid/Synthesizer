@@ -74,9 +74,8 @@ def eq_r(actual, expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
-    """if tab1 == tab2:
-        logger.info(tab1)
-        logger.info(tab2)"""
+    # logger.info(tab1)
+    # logger.info(tab2)
     return tab1 == tab2
 
 
@@ -161,12 +160,9 @@ class RInterpreter(PostOrderInterpreter):
             raise GeneralError()
 
     def eval_group_by(self, node, args):
-        cols = ''
-        for i in args[1]:
-            cols += str(i) + ','
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- group_by_at({table}, c({cols}))'.format(
-                   ret_df=ret_df_name, table=args[0], cols=cols[:-1])
+        _script = '{ret_df} <- {table} %>% group_by({cols})'.format(
+                   ret_df=ret_df_name, table=args[0], cols=args[1])
         try:
             ret_val = robjects.r(_script)
             return ret_df_name
@@ -207,6 +203,17 @@ class RInterpreter(PostOrderInterpreter):
             return ret_df_name
         except:
             logger.error('Error in interpreting top_n...')
+            raise GeneralError()
+
+    def eval_bottom_n(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- {table} %>% arrange({col}) %>% head({number})'.format(
+                  ret_df=ret_df_name, table=args[0], number=args[1], col=args[2])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting bottom_n...')
             raise GeneralError()
 
     def apply_row(self, val):
@@ -307,6 +314,7 @@ class Evaluator:
     def __init__(self, interpreter):
         self.interpreter = interpreter
         self.context = []
+        self.prev_column = None
 
     def eval(self, tyrell_spec, prod, tables=None):
         try:
@@ -329,12 +337,11 @@ class Evaluator:
                 return
             elif str(prod).find("group_by") != -1:
                 n_cols = tab.n_cols
-                cols = [i for i in range(n_cols)]
-                for i in range(1, min(n_cols+1, 2)):
-                    for combination in itertools.combinations(cols, i):
-                        cnsts = [tuple([c + 1 for c in combination])]
-                        res = self.interpreter.eval_group_by(None, [table] + cnsts)
-                        if self.interpreter.apply_groups(res) != self.interpreter.apply_groups(table):
+                for i in range(n_cols):
+                    cnsts = [tab.columns[i].name]
+                    res = self.interpreter.eval_group_by(None, [table] + cnsts)
+                    if self.interpreter.apply_groups(res) != self.interpreter.apply_groups(table):
+                        if self.prev_column is None or self.prev_column == i + 1:
                             yield res, cnsts
             elif str(prod).find("summarise") != -1:
                 n_cols = tab.n_cols
@@ -353,14 +360,18 @@ class Evaluator:
                 if isinstance(tab, InputTable):
                     for idx in tab.date_columns:
                         for op in ['wday', 'year', 'month']:
-                            cnsts = [get_fresh_col(), op, tab.columns[idx].name]
+                            fresh_col = get_fresh_col()
+                            cnsts = [fresh_col, op, tab.columns[idx].name]
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
+                            self.prev_column = tab.n_cols + 1
                             yield res, cnsts
                     if len(tab.date_columns) >= 2:
-                        for combination in itertools.combinations(tab.date_columns, 2):
+                        for combination in itertools.permutations(tab.date_columns, 2):
+                            fresh_col = get_fresh_col()
                             idx1 = combination[0]
                             idx2 = combination[1]
-                            cnsts = [get_fresh_col(), 'time_between', (tab.columns[idx1].name, tab.columns[idx2].name)]
+                            cnsts = [fresh_col, 'time_between', '{}, {}'.format(tab.columns[idx1].name, tab.columns[idx2].name)]
+                            self.prev_column = tab.n_cols + 1
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
                             yield res, cnsts
                 else:
@@ -370,15 +381,20 @@ class Evaluator:
                                 cnsts = [tab.columns[i].name, op, tab.columns[i].name]
                                 res = self.interpreter.eval_mutate(None, [table] + cnsts)
                                 yield res, cnsts
-
-
-
+                self.prev_column = None
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":
                         for j in range(min(12, tab.n_rows), 9, -1):
                             cnsts = [j, tab.columns[i].name]
                             res = self.interpreter.eval_top_n(None, [table] + cnsts)
+                            yield res, cnsts
+            elif str(prod).find("bottom_n") != -1:
+                for i in range(tab.n_cols):
+                    if tab.columns[i].type == "numeric":
+                        for j in range(min(12, tab.n_rows), 9, -1):
+                            cnsts = [j, tab.columns[i].name]
+                            res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
                             yield res, cnsts
 
 
