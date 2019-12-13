@@ -9,6 +9,7 @@ from tyrell.logger import get_logger
 import rpy2.robjects as robjects
 import argparse
 from utils.Table import Table
+from utils.InputTable import InputTable
 import os, signal
 import itertools
 import sys
@@ -26,6 +27,18 @@ robjects.r('''
     library(tidyr)
     library(tibble)
     library(compare)
+    library(lubridate)
+    
+    normalit <- function(m){
+        m/sum(m)
+    }
+    normalit_100 <- function(m){
+        100*m/sum(m)
+    }
+    
+    time_between <- function(m,n) {
+        m - n
+    }
    ''')
 
 ## Common utils.
@@ -111,7 +124,6 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting rowid_to_table...')
             raise GeneralError()
 
-
     def eval_rowid_to_column(self, table):
         ret_df_name = get_fresh_name()
         _script = '{ret_df} <- rowid_to_column({table})'.format(
@@ -174,15 +186,7 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting summarise...')
             raise GeneralError()
 
-
     def eval_mutate(self, node, args):
-        if args[3]:
-            cols = ""
-            for tmp in args[3]:
-                cols += tmp + ","
-            args[3] = "c(" + cols[:-1] + ")"
-        else:
-            args[3] = ""
         ret_df_name = get_fresh_name()
         _script = '{ret_df} <- {table} %>% mutate(`{res}`={op}({cols}))'.format(
                   ret_df=ret_df_name, table=args[0], res=args[1], op=args[2], cols=args[3])
@@ -204,7 +208,6 @@ class RInterpreter(PostOrderInterpreter):
         except:
             logger.error('Error in interpreting top_n...')
             raise GeneralError()
-
 
     def apply_row(self, val):
         df = val
@@ -237,6 +240,65 @@ def init_tbl(df_name, csv_loc):
     '''
     cmd = cmd.replace('tbl_name', df_name).replace('csv_location', '"'+ csv_loc + '"')
     robjects.r(cmd)
+    return None
+
+
+def init_input_tbl(df_name, csv_loc):
+    init_tbl(df_name, csv_loc)
+
+    n_cols = robjects.r('ncol(' + df_name + ')')[0]
+    n_rows = robjects.r('nrow(' + df_name + ')')[0]
+    col_types = [robjects.r('sapply(' + df_name + ', class)')[i] for i in range(n_cols)]
+    col_names = [robjects.r('colnames(' + df_name + ')')[i] for i in range(n_cols)]
+    inc_tabs[df_name] = InputTable(n_rows, n_cols, col_types, None, col_names)
+
+    date_detection = '''
+    tmp <- sample_n(df_name,10)
+    first <- unname(unlist(sapply(tmp,as.character)))
+    
+    dateFormats = c("%d/%m/%Y", "%d-%m-%Y", "%Y/%m/%d", "%Y-%m-%d", "%m/%d/%Y", "%m-%d-%Y")
+    lubriFormat = c("dmy", "dmy", "ymd", "ymd", "mdy", "mdy")
+    
+    isDate <- function(x) {
+        out <- tryCatch(
+            {
+                return(!(is.na(as.Date(as.character(x), format=dateFormats, tz = "UTC"))))
+            },
+            error=function(cond) {
+                return(FALSE)
+            }
+        )    
+        return(out)
+    }
+
+                
+            
+    out <- c()
+    formats <- list()
+    for (i in 1:length(tmp)) {
+        out_tmp = c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
+        for (j in 1:10) {
+            truth_value <- isDate(first[j,i])
+            out_tmp <- out_tmp & truth_value
+        }
+        if (!all(!out_tmp)) {
+            out <- append(out, i)
+            formats[[i]] <- c(lubriFormat[out_tmp])
+        }
+    }
+    '''.replace('df_name', df_name)
+    robjects.r(date_detection)
+    formats = robjects.r('formats')
+    cols = robjects.r('out')
+
+    if cols:
+        inc_tabs[df_name].set_date_columns([i-1 for i in cols])
+        inc_tabs[df_name].set_date_formats({i-1 : list(formats[i-1]) for i in cols})
+        tmp = inc_tabs[df_name]
+
+        for col in tmp.date_columns:
+            _script = "{df} <- {df} %>% mutate({name} = {form}({name}))".format(df=df_name, name=col_names[col], form=tmp.date_formats[col][0])
+            robjects.r(_script)
     return None
 
 
@@ -288,28 +350,29 @@ class Evaluator:
             elif str(prod).find("mutate") != -1:
                 group_vars = self.interpreter.eval_group_vars(table)
                 group_vars = list(group_vars)
-                colindexes = [i for i in range(tab.n_cols) if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars]
-                for i in range(1, min(len(colindexes) + 1, 2)):
-                    for combination in itertools.combinations(colindexes, i):
-                        for op in ["cumsum"]:
-                            cnsts = [get_fresh_col(), op, tuple([tab.columns[c].name for c in combination])]
+                if isinstance(tab, InputTable):
+                    for idx in tab.date_columns:
+                        for op in ['wday', 'year', 'month']:
+                            cnsts = [get_fresh_col(), op, tab.columns[idx].name]
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
                             yield res, cnsts
-                        #custom functions
-                        for op in ["normalit"]:
-                            cnsts = [[tab.columns[c].name for c in combination][0], op, tuple([tab.columns[c].name for c in combination])]
+                    if len(tab.date_columns) >= 2:
+                        for combination in itertools.combinations(tab.date_columns, 2):
+                            idx1 = combination[0]
+                            idx2 = combination[1]
+                            cnsts = [get_fresh_col(), 'time_between', (tab.columns[idx1].name, tab.columns[idx2].name)]
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
                             yield res, cnsts
-                for i in range(1, min(len(colindexes) + 1, 4)):
-                    for combination in itertools.combinations(colindexes, i):
-                        for op in ["max", "sum", "mean", "min", "median"]:
-                            cnsts = [get_fresh_col(), op, tuple([tab.columns[c].name for c in combination])]
-                            res = self.interpreter.eval_mutate(None, [table] + cnsts)
-                            yield res, cnsts
-                for op in ["n"]:
-                    cnsts = [get_fresh_col(), op, tuple()]
-                    res = self.interpreter.eval_mutate(None, [table] + cnsts)
-                    yield res, cnsts
+                else:
+                    for i in range(tab.n_cols):
+                        if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
+                            for op in ['normalit', 'normalit_100']:
+                                cnsts = [tab.columns[i].name, op, tab.columns[i].name]
+                                res = self.interpreter.eval_mutate(None, [table] + cnsts)
+                                yield res, cnsts
+
+
+
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":
@@ -346,7 +409,7 @@ def main():
     output = args.output
 
     # This is required by Ruben.
-    init_tbl('input0', input0)
+    init_input_tbl('input0', input0)
     init_tbl('output', output)
     build_tab('output').max_input = args.plotmax
 
@@ -384,6 +447,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('INFO')
+    logger.setLevel('DEBUG')
     main()
 

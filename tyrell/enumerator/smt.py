@@ -465,7 +465,7 @@ class SmtEnumerator(FromIteratorEnumerator):
                     self._resolve_occurs_predicate(pred)
                 elif pred.name == 'is_parent':
                     self._resolve_is_parent_predicate(pred)
-                elif pred.name == 'enforce_sequence':
+                elif pred.name == 'sequence':
                     prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
                     prod1 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[1])]
                     if prod1 not in order_restrictions:
@@ -485,6 +485,7 @@ class SmtEnumerator(FromIteratorEnumerator):
                         enforce_sequence[prod0] = [prod1]
                     else:
                         enforce_sequence[prod0] += [prod1]
+
             self._resolve_order_restriction(order_restrictions)
             self._resolve_enforce_sequence(enforce_sequence)
         except (KeyError, ValueError) as e:

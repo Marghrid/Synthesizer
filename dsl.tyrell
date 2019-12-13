@@ -40,22 +40,26 @@ func top_n: Table r -> Table a, Const b, Const c {
   row(r) <= row(a);
 }
 
+func mutate: Table r -> Table a, Const b, Const c, Const d {
+  row(r) == row(a);
+  col(r) == col(a);
+  groups(r) == groups(a);
+}
 
 
 
-
+predicate is_parent(mutate, summarise, 100);
 
 
 #Hard constraints
-predicate enforce_sequence(summarise, group_by); # summarize => group_by
-predicate enforce_sequence(count, group_by); # count => group_by
-# group_by => summarize or count
+
+
+predicate sequence(summarise, group_by); # summarize => group_by
+predicate sequence(count, group_by); # count => group_by
+                                     # group_by => summarize or count
 
 
 
-predicate order_restriction(top_n, count);
-predicate order_restriction(top_n, summarise);
-# top_n => count or summarize
-
-
-
+predicate order_restriction(top_n, count); # top_n => count or summarize or mutate
+predicate order_restriction(top_n, summarise); # top_n => count or summarize or mutate
+predicate order_restriction(top_n, mutate); # top_n => count or summarize or mutate

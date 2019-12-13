@@ -1,4 +1,13 @@
 Q = {}
+
+Q[24] = "python3 synthesizer.py -i ~/Downloads/Q24-population-barcelona.csv -o benchmarks/real_output_tables/Q24-population-barcelona_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"
+Q[51] = "python3 synthesizer.py -i ~/Downloads/Q51-aircraft.csv -o benchmarks/real_output_tables/Q51-aircraft_out.csv -l 4 -d 5 -t dsl.tyrell -m 15 "
+Q[45] = "python3 synthesizer.py -i ~/Downloads/Q45-members.csv -o benchmarks/real_output_tables/Q45-members_out.csv  -l 3 -d 4 -t dsl.tyrell -m 150"
+Q[44] = "python3 synthesizer.py -i ~/Downloads/Q45-members.csv -o benchmarks/real_output_tables/Q45-members_out.csv  -l 3 -d 4 -t dsl.tyrell -m 150"
+Q[41] = "python3 synthesizer.py -i ~/Downloads/Q41-gun-violence.csv -o benchmarks/real_output_tables/Q41-gun-violence_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"
+Q[39] = "python3 synthesizer.py -i ~/Downloads/Q39-gun-violence.csv -o benchmarks/real_output_tables/Q39-gun-violence_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"
+Q[3] = "python3 synthesizer.py -i ~/Downloads/Q2-consumer_complaints.csv -o benchmarks/real_output_tables/Q3-consumer_complaints_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"
+
 Q[7] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q7-input-avocado.csv -o benchmarks/real_output_tables/Q7-output-avocado.csv -l 2 -d 3 -t dsl.tyrell -m 6200000000"
 Q[43] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q43-employee.csv -o benchmarks/noisy_output_tables/Q43-employee_nn-out.csv -l 2 -d 3 -t dsl.tyrell -m 3170"
 Q[42] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q42-employee.csv -o benchmarks/noisy_output_tables/Q42-employee_nn-out.csv -l 2 -d 3 -t dsl.tyrell -m 615"
@@ -13,3 +22,7 @@ Q[21] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q21-crimes-in-boston
 Q[12] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q12-input-bikes.csv -o benchmarks/noisy_output_tables/Q12-output-nn-bikes.csv -l 2 -d 3 -t dsl.tyrell -m 815"
 Q[13] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q13-input-bikes.csv -o benchmarks/noisy_output_tables/Q13-output-nn-bikes.csv -l 2 -d 3 -t dsl.tyrell -m 40"
 Q[17] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q17-input-work.csv -o benchmarks/noisy_output_tables/Q17-output-nn-work.csv -l 2 -d 3 -t dsl.tyrell -m 250"
+
+for i in range(55):
+    if i not in Q:
+        print(i)
