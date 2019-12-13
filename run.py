@@ -1,5 +1,7 @@
 Q = {}
 
+
+Q[28] = "python3 synthesizer.py -i ~/Downloads/youtube.csv  -o benchmarks/real_output_tables/Q28-youtube-traffic_out.csv -l 4 -d 5 -t dsl.tyrell -m 150"
 Q[24] = "python3 synthesizer.py -i ~/Downloads/Q24-population-barcelona.csv -o benchmarks/real_output_tables/Q24-population-barcelona_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"
 Q[51] = "python3 synthesizer.py -i ~/Downloads/Q51-aircraft.csv -o benchmarks/real_output_tables/Q51-aircraft_out.csv -l 4 -d 5 -t dsl.tyrell -m 15 "
 Q[45] = "python3 synthesizer.py -i ~/Downloads/Q45-members.csv -o benchmarks/real_output_tables/Q45-members_out.csv  -l 3 -d 4 -t dsl.tyrell -m 150"
