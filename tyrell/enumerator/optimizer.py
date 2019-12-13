@@ -120,6 +120,10 @@ class Optimizer:
                     ctr = Or(ctr, Implies(self.variables[self.nodes[x].parent.id - 1] == parent_prod.id, self.variables[x] == child.id))
             self.solver.add(ctr)
 
+    def mk_is_root(self, prod):
+        ctr = None
+        for x in range(1, len(self.nodes)):
+            self.solver.add(self.variables[x] != prod.id)
 
     def mk_is_parent(self, parent, child, weight=None):
         '''children production will have the parent production with probability weight'''

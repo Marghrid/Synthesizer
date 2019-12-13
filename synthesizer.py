@@ -74,8 +74,8 @@ def eq_r(actual, expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
-    # logger.info(tab1)
-    # logger.info(tab2)
+    #logger.info(tab1)
+    #logger.info(tab2)
     return tab1 == tab2
 
 
@@ -391,11 +391,12 @@ class Evaluator:
                             yield res, cnsts
             elif str(prod).find("bottom_n") != -1:
                 for i in range(tab.n_cols):
-                    if tab.columns[i].type == "numeric":
-                        for j in range(min(12, tab.n_rows), 9, -1):
-                            cnsts = [j, tab.columns[i].name]
-                            res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
-                            yield res, cnsts
+                    #logger.info(tab.columns[i].type)
+                    #if tab.columns[i].type == "numeric":
+                    for j in range(min(12, tab.n_rows), 9, -1):
+                        cnsts = [j, tab.columns[i].name]
+                        res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
+                        yield res, cnsts
 
 
     def eval_rows(self, table):

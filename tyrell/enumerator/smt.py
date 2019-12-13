@@ -455,6 +455,9 @@ class SmtEnumerator(FromIteratorEnumerator):
         for prod in enforce_sequence:
             self.optimizer.mk_is_child(prod, enforce_sequence[prod])
 
+    def _resolve_only_at_root(self, pred):
+        prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
+        self.optimizer.mk_is_root(prod0)
 
     def resolve_predicates(self):
         try:
@@ -485,6 +488,8 @@ class SmtEnumerator(FromIteratorEnumerator):
                         enforce_sequence[prod0] = [prod1]
                     else:
                         enforce_sequence[prod0] += [prod1]
+                elif pred.name == "only_at_root":
+                    self._resolve_only_at_root(pred)
 
             self._resolve_order_restriction(order_restrictions)
             self._resolve_enforce_sequence(enforce_sequence)

@@ -68,3 +68,6 @@ predicate order_restriction(top_n, mutate); # top_n => count or summarize or mut
 predicate order_restriction(bottom_n, count); # bottom_n => count or summarize or mutate
 predicate order_restriction(bottom_n, summarise); # bottom_n => count or summarize or mutate
 predicate order_restriction(bottom_n, mutate); # bottom_n => count or summarize or mutate
+
+predicate only_at_root(top_n);
+predicate only_at_root(bottom_n);
