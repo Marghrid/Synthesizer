@@ -1,5 +1,6 @@
 Q = {}
 
+Q[14] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q14-airline-sentiment.csv -o benchmarks/noisy_output_tables/Q14-airline-sentiment_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 3525"
 Q[51] = "python3 synthesizer.py -i benchmarks/input_tables/Q51-aircraft.csv  -o benchmarks/noisy_output_tables/Q51-aircraft_nn-out.csv -l 4 -d 5 -t dsl.tyrell -m 15"
 Q[45] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q45-members.csv  -o benchmarks/noisy_output_tables/Q45-members_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 430"
 Q[41] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q41-gun-violence.csv -o benchmarks/noisy_output_tables/Q41-gun-violence_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 355"

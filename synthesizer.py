@@ -216,6 +216,17 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting bottom_n...')
             raise GeneralError()
 
+    def eval_filter(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- {table} %>% filter({col} {op} {const}) %>% droplevels()'.format(
+                  ret_df=ret_df_name, table=args[0], col=args[1], op=args[2], const=args[3])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting filter...')
+            raise GeneralError()
+
     def apply_row(self, val):
         df = val
         if isinstance(val, str):
@@ -306,6 +317,7 @@ def init_input_tbl(df_name, csv_loc):
         for col in tmp.date_columns:
             _script = "{df} <- {df} %>% mutate({name} = {form}({name}))".format(df=df_name, name=col_names[col], form=tmp.date_formats[col][0])
             robjects.r(_script)
+            inc_tabs[df_name].columns[col].type = "Date"
     return None
 
 
@@ -355,15 +367,19 @@ class Evaluator:
                 for i in range(n_cols):
                     if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
                         for op in ["max", "min", "mean", "sum", "median"]:
+                            self.prev_column = 2
                             res = self.interpreter.eval_summarise(None, [table, op, i+1])
                             yield res, [op, i+1]
             elif str(prod).find("count") != -1:
+                self.prev_column = 2
                 yield self.interpreter.eval_count(None, [table]), []
             elif str(prod).find("mutate") != -1:
                 group_vars = self.interpreter.eval_group_vars(table)
                 group_vars = list(group_vars)
                 if isinstance(tab, InputTable):
                     for idx in tab.date_columns:
+                        if self.prev_column is not None and self.prev_column != idx:
+                            continue
                         for op in ['wday', 'year', 'month']:
                             fresh_col = get_fresh_col()
                             cnsts = [fresh_col, op, tab.columns[idx].name]
@@ -375,18 +391,22 @@ class Evaluator:
                             fresh_col = get_fresh_col()
                             idx1 = combination[0]
                             idx2 = combination[1]
+                            if self.prev_column is not None and (self.prev_column != idx1 or self.prev_column != idx2):
+                                continue
                             cnsts = [fresh_col, 'time_between', '{}, {}'.format(tab.columns[idx1].name, tab.columns[idx2].name)]
                             self.prev_column = tab.n_cols + 1
                             res = self.interpreter.eval_mutate(None, [table] + cnsts)
                             yield res, cnsts
                 else:
                     for i in range(tab.n_cols):
+                        if self.prev_column is not None and self.prev_column != i:
+                            continue
                         if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
                             for op in ['normalit', 'normalit_100']:
                                 cnsts = [tab.columns[i].name, op, tab.columns[i].name]
                                 res = self.interpreter.eval_mutate(None, [table] + cnsts)
                                 yield res, cnsts
-                self.prev_column = None
+
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":
@@ -402,6 +422,19 @@ class Evaluator:
                             cnsts = [j, tab.columns[i].name]
                             res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
                             yield res, cnsts
+            elif str(prod).find("filter") != -1:
+                for i in range(len(tab.columns)):
+                    if self.prev_column is not None and self.prev_column != i:
+                        continue
+                    if tab.columns[i].type not in ["numeric", "difftime", "Date"]:
+                        values = ['']
+                        for value in values:
+                            for op in ["==", "!="]:
+                                self.prev_column = i + 1
+                                cnsts = [tab.columns[i].name, op, '\'' + value + '\'']
+                                res = self.interpreter.eval_filter(None, [table] + cnsts)
+                                yield res, cnsts
+            self.prev_column = None
 
     def eval_rows(self, table):
         return self.interpreter.apply_row(table)
