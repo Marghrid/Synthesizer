@@ -1,5 +1,12 @@
 Q = {}
 
+Q[51] = "python3 synthesizer.py -i benchmarks/input_tables/Q51-aircraft.csv  -o benchmarks/noisy_output_tables/Q51-aircraft_nn-out.csv -l 4 -d 5 -t dsl.tyrell -m 15"
+Q[45] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q45-members.csv  -o benchmarks/noisy_output_tables/Q45-members_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 430"
+Q[41] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q41-gun-violence.csv -o benchmarks/noisy_output_tables/Q41-gun-violence_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 355"
+Q[39] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q39-gun-violence.csv  -o benchmarks/noisy_output_tables/Q39-gun-violence_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 610"
+Q[28] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q28-youtube-traffic.csv -o benchmarks/real_output_tables/Q28-youtube-traffic_out.csv -l 4 -d 5 -t dsl.tyrell -m 70"
+Q[24] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q24-population-barcelona.csv -o benchmarks/noisy_output_tables/Q24-population-barcelona_nn-out.csv  -l 3 -d 4 -t dsl.tyrell -m 70"
+Q[2] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q2-consumer_complaints.csv  -o benchmarks/noisy_output_tables/Q3-consumer_complaints_nn-out.csv -l 3 -d 4 -t dsl.tyrell -m 221000"
 
 Q[28] = "python3 synthesizer.py -i ~/Downloads/youtube.csv  -o benchmarks/real_output_tables/Q28-youtube-traffic_out.csv -l 4 -d 5 -t dsl.tyrell -m 150"
 Q[24] = "python3 synthesizer.py -i ~/Downloads/Q24-population-barcelona.csv -o benchmarks/real_output_tables/Q24-population-barcelona_out.csv -l 3 -d 4 -t dsl.tyrell -m 150"

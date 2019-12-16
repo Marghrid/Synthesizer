@@ -75,7 +75,7 @@ def eq_r(actual, expect):
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
     #logger.info(tab1)
-    #logger.info(tab2)
+    #logger.info(tab2)f
     return tab1 == tab2
 
 
@@ -161,7 +161,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_group_by(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% group_by({cols})'.format(
+        _script = '{ret_df} <- {table} %>% group_by(`{cols}`)'.format(
                    ret_df=ret_df_name, table=args[0], cols=args[1])
         try:
             ret_val = robjects.r(_script)
@@ -337,12 +337,17 @@ class Evaluator:
                 return
             elif str(prod).find("group_by") != -1:
                 n_cols = tab.n_cols
-                for i in range(n_cols):
-                    cnsts = [tab.columns[i].name]
+                if self.prev_column is not None:
+                    cnsts = [tab.columns[self.prev_column - 1].name]
                     res = self.interpreter.eval_group_by(None, [table] + cnsts)
-                    if self.interpreter.apply_groups(res) != self.interpreter.apply_groups(table):
-                        if self.prev_column is None or self.prev_column == i + 1:
+                    yield res, cnsts
+                else:
+                    for i in range(n_cols):
+                        cnsts = [tab.columns[i].name]
+                        res = self.interpreter.eval_group_by(None, [table] + cnsts)
+                        if self.interpreter.apply_groups(res) != self.interpreter.apply_groups(table):
                             yield res, cnsts
+
             elif str(prod).find("summarise") != -1:
                 n_cols = tab.n_cols
                 group_vars = self.interpreter.eval_group_vars(table)
@@ -397,7 +402,6 @@ class Evaluator:
                             cnsts = [j, tab.columns[i].name]
                             res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
                             yield res, cnsts
-
 
     def eval_rows(self, table):
         return self.interpreter.apply_row(table)
@@ -464,6 +468,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('DEBUG')
+    logger.setLevel('INFO')
     main()
 
