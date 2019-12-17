@@ -437,7 +437,7 @@ class Evaluator:
                         res = self.interpreter.eval_filter(None, [table] + cnsts)
                         yield res, cnsts
                     if tab.columns[i].type == "character":
-                        for fn in ["empty_string"]:
+                        for fn in ["!empty_string"]:
                             self.prev_column = i + 1
                             cnsts = [fn, tab.columns[i].name]
                             res = self.interpreter.eval_filter(None, [table] + cnsts)
