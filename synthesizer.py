@@ -153,7 +153,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_count(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- summarize({table}, n=n())\n' \
+        _script = '{ret_df} <-  summarize({table}, n=n())\n' \
                   '{ret_df}$n <- as.numeric({ret_df}$n)'.format(
                    ret_df=ret_df_name, table=args[0])
         try:
@@ -176,7 +176,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_summarise(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% summarise_at(.vars = colnames(.)[{col}], {aggr})'.format(
+        _script = '{ret_df} <- {table} %>% filter(!is.nan(`{col}`)) %>% summarize({aggr}(`{col}`))'.format(
                   ret_df=ret_df_name, table=args[0], aggr=str(args[1]), col=str(args[2]))
         try:
             ret_val = robjects.r(_script)
@@ -372,7 +372,7 @@ class Evaluator:
                     if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
                         for op in ["max", "min", "mean", "sum", "median"]:
                             self.prev_column = 2
-                            res = self.interpreter.eval_summarise(None, [table, op, i+1])
+                            res = self.interpreter.eval_summarise(None, [table, op, tab.columns[i].name])
                             yield res, [op, i+1]
             elif str(prod).find("count") != -1:
                 self.prev_column = 2

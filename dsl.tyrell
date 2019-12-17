@@ -57,7 +57,7 @@ func filter: Table r -> Table a, Const b, Const c {
 
 
 predicate occurs(group_by, 1);
-predicate occurs(summarise, 2);
+predicate occurs(summarise, 20);
 predicate occurs(count, 3);
 
 
