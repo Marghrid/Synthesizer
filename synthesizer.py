@@ -39,6 +39,10 @@ robjects.r('''
     time_between <- function(m,n) {
         m - n
     }
+    
+    empty_string <- function(m) {
+        m == ''
+    }
    ''')
 
 ## Common utils.
@@ -432,8 +436,12 @@ class Evaluator:
                         cnsts = [fn, tab.columns[i].name]
                         res = self.interpreter.eval_filter(None, [table] + cnsts)
                         yield res, cnsts
-                    if tab.columns[i].type not in ["numeric", "difftime", "Date"]:
-                        pass
+                    if tab.columns[i].type == "character":
+                        for fn in ["empty_string"]:
+                            self.prev_column = i + 1
+                            cnsts = [fn, tab.columns[i].name]
+                            res = self.interpreter.eval_filter(None, [table] + cnsts)
+                            yield res, cnsts
             self.prev_column = None
 
     def eval_rows(self, table):
