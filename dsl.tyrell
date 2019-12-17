@@ -21,7 +21,7 @@ func empty: Empty -> Empty;
 func summarise: Table r -> Table a, Const b, Const c {
   row(r) <= row(a);
   col(r) <= col(a) + 1;
-  groups(r) <= groups(a);
+  groups(r) == groups(a);
 }
 
 func group_by: Table r -> Table a, Const b {
@@ -33,15 +33,19 @@ func group_by: Table r -> Table a, Const b {
 func count: Table r -> Table a {
   row(r) <= row(a);
   col(r) <= col(a) + 1;
-  groups(r) <= groups(a);
+  groups(r) == groups(a);
 }
 
 func top_n: Table r -> Table a, Const b, Const c {
   row(r) <= row(a);
+  col(r) == col(a);
+  groups(r) <= groups(a);
 }
 
 func bottom_n: Table r -> Table a, Const b, Const c {
   row(r) <= row(a);
+  col(r) == col(a);
+  groups(r) <= groups(a);
 }
 
 func mutate: Table r -> Table a, Const b, Const c, Const d {
@@ -53,8 +57,14 @@ func mutate: Table r -> Table a, Const b, Const c, Const d {
 func filter: Table r -> Table a, Const b, Const c {
   row(r) <= row(a) - 1;
   col(r) == col(a);
+  groups(r) == groups(a);
 }
 
+func gather: Table r -> Table a {
+  row(r) >= row(a);
+  col(r) <= col(a);
+  groups(r) == groups(a);
+}
 
 
 #Hard constraints

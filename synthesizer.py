@@ -370,7 +370,7 @@ class Evaluator:
                 group_vars = list(group_vars)
                 for i in range(n_cols):
                     if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
-                        for op in ["max", "min", "mean", "sum", "median"]:
+                        for op in ["max", "min", "mean", "median"]:
                             self.prev_column = 2
                             res = self.interpreter.eval_summarise(None, [table, op, tab.columns[i].name])
                             yield res, [op, i+1]

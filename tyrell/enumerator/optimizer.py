@@ -222,13 +222,8 @@ class Optimizer:
                 Implies(self.var_occurs[production.id] == 1, v == 0))
             self.id = self.id + 1
         else:
-            ctr = None
-            for var in self.variables:
-                if ctr is None:
-                    ctr = var == production.id
-                else:
-                    ctr = Or(ctr, var == production.id)
-            self.solver.add(ctr)
+            self.solver.add(self.var_occurs[production.id] == 1)
+
 
     def isSubsetSum(self, set, n, sum):
         subset = ([[False for i in range(sum + 1)]
