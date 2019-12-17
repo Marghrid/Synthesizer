@@ -176,8 +176,8 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_summarise(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% filter(!is.nan(`{col}`)) %>% summarize({aggr}(`{col}`))'.format(
-                  ret_df=ret_df_name, table=args[0], aggr=str(args[1]), col=str(args[2]))
+        _script = '{ret_df} <- {table} %>% filter(!is.nan(`{col}`)) %>% summarize({name} = {aggr}(`{col}`))'.format(
+                  ret_df=ret_df_name, table=args[0], aggr=str(args[1]), col=str(args[2]), name=get_fresh_col())
         try:
             ret_val = robjects.r(_script)
             return ret_df_name
