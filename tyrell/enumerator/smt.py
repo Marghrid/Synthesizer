@@ -459,6 +459,10 @@ class SmtEnumerator(FromIteratorEnumerator):
         prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
         self.optimizer.mk_is_root(prod0)
 
+    def _resolve_must_occurs(self, pred):
+        prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
+        self.optimizer.mk_occurs(prod0, None)
+
     def resolve_predicates(self):
         try:
             order_restrictions = {}
@@ -480,16 +484,17 @@ class SmtEnumerator(FromIteratorEnumerator):
                         enforce_sequence[prod0] = [prod1]
                     else:
                         enforce_sequence[prod0] += [prod1]
-
-                elif pred.name == "order_restriction":
+                elif pred.name == 'order_restriction':
                     prod0 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[0])]
                     prod1 = WrapProduction.mapping[self.tyrell_spec.get_function_production_or_raise(pred.args[1])]
                     if prod0 not in enforce_sequence:
                         enforce_sequence[prod0] = [prod1]
                     else:
                         enforce_sequence[prod0] += [prod1]
-                elif pred.name == "only_at_root":
+                elif pred.name == 'only_at_root':
                     self._resolve_only_at_root(pred)
+                elif pred.name == 'must_occur':
+                    self._resolve_must_occurs(pred)
 
             self._resolve_order_restriction(order_restrictions)
             self._resolve_enforce_sequence(enforce_sequence)

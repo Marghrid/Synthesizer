@@ -56,10 +56,6 @@ func filter: Table r -> Table a, Const b, Const c {
 }
 
 
-predicate occurs(group_by, 1);
-predicate occurs(summarise, 20);
-predicate occurs(count, 3);
-
 
 #Hard constraints
 
@@ -78,3 +74,6 @@ predicate order_restriction(bottom_n, mutate); # bottom_n => count or summarize 
 
 predicate only_at_root(top_n);
 predicate only_at_root(bottom_n);
+
+predicate must_occur(group_by);
+
