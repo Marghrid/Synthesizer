@@ -36,8 +36,12 @@ robjects.r('''
         100*m/sum(m)
     }
     
-    time_between <- function(m,n) {
+    days_between <- function(m,n) {
         m - n
+    }
+    
+    years_between <- function(m,n) {
+        year(m) - year(n)
     }
     
     empty_string <- function(m) {
@@ -408,10 +412,11 @@ class Evaluator:
                             idx2 = combination[1]
                             if self.prev_column is not None and (self.prev_column != idx1 + 1 or self.prev_column != idx2 + 1):
                                 continue
-                            cnsts = [fresh_col, 'time_between', '{}, {}'.format(tab.columns[idx1].name, tab.columns[idx2].name)]
-                            self.prev_column = tab.n_cols + 1
-                            res = self.interpreter.eval_mutate(None, [table] + cnsts)
-                            yield res, cnsts
+                            for fn in ['days_between', 'years_between']:
+                                cnsts = [fresh_col, fn, '{}, {}'.format(tab.columns[idx1].name, tab.columns[idx2].name)]
+                                self.prev_column = tab.n_cols + 1
+                                res = self.interpreter.eval_mutate(None, [table] + cnsts)
+                                yield res, cnsts
                 else:
                     for i in range(tab.n_cols):
                         if self.prev_column is not None and self.prev_column != i + 1:
@@ -421,22 +426,18 @@ class Evaluator:
                                 cnsts = [tab.columns[i].name, op, tab.columns[i].name]
                                 res = self.interpreter.eval_mutate(None, [table] + cnsts)
                                 yield res, cnsts
-
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":
-                        for j in range(min(12, tab.n_rows), 9, -1):
-                            cnsts = [j, tab.columns[i].name]
-                            res = self.interpreter.eval_top_n(None, [table] + cnsts)
-                            yield res, cnsts
+                        cnsts = [tabs['output'].n_rows, tab.columns[i].name]
+                        res = self.interpreter.eval_top_n(None, [table] + cnsts)
+                        yield res, cnsts
             elif str(prod).find("bottom_n") != -1:
                 for i in range(tab.n_cols):
-                    #logger.info(tab.columns[i].type)
                     if tab.columns[i].type == "numeric" or tab.columns[i].type == "difftime":
-                        for j in range(min(12, tab.n_rows), 9, -1):
-                            cnsts = [j, tab.columns[i].name]
-                            res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
-                            yield res, cnsts
+                        cnsts = [tabs['output'].n_rows, tab.columns[i].name]
+                        res = self.interpreter.eval_bottom_n(None, [table] + cnsts)
+                        yield res, cnsts
             elif str(prod).find("filter") != -1:
                 for i in range(len(tab.columns)):
                     if self.prev_column is not None and self.prev_column != i + 1:
@@ -517,7 +518,7 @@ def main():
     synthesizer.set_table(Table)
     prog = synthesizer.synthesize()
     if prog is not None:
-        logger.info('Solution found: {}'.format(prog))
+        logger.info('Selected solution: {}'.format(prog))
     else:
         logger.info('Solution not found!')
     sys.stderr.flush()

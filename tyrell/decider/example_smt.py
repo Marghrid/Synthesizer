@@ -205,8 +205,8 @@ class BlameFinder:
         return [list(x) for x in self._blames_collection]
 
     def process_examples(self, examples: List[Example]):
-        # for example in examples:
-        #     self.process_example(example)
+        for example in examples:
+            self.process_example(example)
         return
 
     def process_example(self, example: Example):
@@ -229,6 +229,7 @@ class SmtBasicDecider(ExampleDecider):
     _imply_map: ImplyMap
     _strong_imply_map: dict
     _assert_handler: AssertionViolationHandler
+    active = False
 
     def __init__(self,
                  spec: TyrellSpec,
@@ -267,7 +268,6 @@ class SmtBasicDecider(ExampleDecider):
         constrained_prods = filter(
             lambda prod: prod.is_function() and len(prod.constraints) > 0,
             spec.productions())
-        return ret
         for prod0, prod1 in permutations(constrained_prods, r=2):
             '''if len(prod0.rhs) != len(prod1.rhs):
                 continue'''
@@ -307,14 +307,14 @@ class SmtBasicDecider(ExampleDecider):
         failed_examples = self.get_failed_examples(prog)
         if len(failed_examples) == 0:
             return ok()
-        else:
+        elif self.active:
             blame_finder = BlameFinder(self.interpreter, self._imply_map, prog)
             blame_finder.process_examples(failed_examples)
             blames = blame_finder.get_blames()
-            if len(blames) == 0:
-                return bad()
-            else:
-                return bad()
+            if len(blames) != 0:
+                return bad(blames)
+        return bad()
+
 
     def analyze_interpreter_error(self, error: InterpreterError):
         return self._assert_handler.handle_interpreter_error(error)

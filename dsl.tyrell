@@ -19,50 +19,50 @@ func empty: Empty -> Empty;
 
 
 func summarise: Table r -> Table a, Const b, Const c {
-  row(r) <= row(a);
-  col(r) <= col(a) + 1;
+  col(r) <= col(a);
+  row(r) == groups(a);
   groups(r) == groups(a);
 }
 
 func group_by: Table r -> Table a, Const b {
-  row(r) == row(a);
   col(r) == col(a);
+  row(r) == row(a);
   groups(r) < groups(a);
 }
 
 func count: Table r -> Table a {
-  row(r) <= row(a);
-  col(r) <= col(a) + 1;
+  col(r) <= col(a);
+  row(r) == groups(a);
   groups(r) == groups(a);
 }
 
 func top_n: Table r -> Table a, Const b, Const c {
-  row(r) <= row(a);
   col(r) == col(a);
-  groups(r) <= groups(a);
+  row(r) < row(a);
+  groups(r) < groups(a);
 }
 
 func bottom_n: Table r -> Table a, Const b, Const c {
-  row(r) <= row(a);
   col(r) == col(a);
-  groups(r) <= groups(a);
+  row(r) < row(a);
+  groups(r) < groups(a);
 }
 
 func mutate: Table r -> Table a, Const b, Const c, Const d {
+  col(r) >= col(a);
   row(r) == row(a);
-  col(r) == col(a);
   groups(r) == groups(a);
 }
 
 func filter: Table r -> Table a, Const b, Const c {
-  row(r) <= row(a) - 1;
   col(r) == col(a);
+  row(r) < row(a);
   groups(r) == groups(a);
 }
 
 func gather: Table r -> Table a {
-  row(r) >= row(a);
   col(r) <= col(a);
+  row(r) >= row(a);
   groups(r) == groups(a);
 }
 
@@ -86,4 +86,3 @@ predicate only_at_root(top_n);
 predicate only_at_root(bottom_n);
 
 predicate must_occur(group_by);
-

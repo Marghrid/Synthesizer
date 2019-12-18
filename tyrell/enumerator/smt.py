@@ -11,19 +11,23 @@ from tyrell.logger import get_logger
 from time import time
 
 logger = get_logger('tyrell')
-first = True
+pruning = True
 
 
 class BadSkeletonException(Exception):
     pass
 
 class AST:
-
     def __init__(self):
         self.head = None
         self.tyrell_spec = None
 
     def dfs_dynamic(self, evaluator):
+        if pruning:
+            ASTNode.solver = Solver()
+            ASTNode.solver.assert_and_track(z3.Int('row_n1') == evaluator.eval_rows('output'), 'row')
+            ASTNode.solver.assert_and_track(z3.Int('col_n1') == evaluator.eval_cols('output'), 'col')
+            ASTNode.solver.assert_and_track(z3.Int('groups_n1') == evaluator.eval_groups('output'), 'groups')
         return self.head.dfs_dynamic(self.tyrell_spec, evaluator)
 
     def dfs_fill(self):
@@ -46,8 +50,16 @@ class ASTNode:
     def dfs_dynamic(self, tyrell_spec: TyrellSpec, evaluator):
         if self.children is None or self.production.rhs == [0] or str(self.production).find("param") != -1:
             new_table = next(evaluator.eval(tyrell_spec, self.production))[0]
-            yield [new_table], [[self.id, self.production]]
+            if pruning:
+                ASTNode.solver.push()
+                yield [new_table], [[self.id, self.production]]
+                ASTNode.solver.pop()
+            else:
+                yield [new_table], [[self.id, self.production]]
             return
+
+        if pruning:
+            self.add_constraint()
 
         child = next(filter(lambda child: str(child.production).find('Table') != -1, self.children))
         gnrt = child.dfs_dynamic(tyrell_spec, evaluator)
@@ -58,7 +70,14 @@ class ASTNode:
             nxt2 = next(new_gnrt, None)
             while nxt2:
                 new_table, new_constants = nxt2
-                yield [new_table], [[self.id] + [self.production] + constants + new_constants]
+                if pruning:
+                    ASTNode.solver.push()
+                    self.add_concrete_constraint(new_table, evaluator)
+                    if ASTNode.solver.check() == sat or self.depth == 1:
+                        yield [new_table], [[self.id] + [self.production] + constants + new_constants]
+                    ASTNode.solver.pop()
+                else:
+                    yield [new_table], [[self.id] + [self.production] + constants + new_constants]
                 nxt2 = next(new_gnrt, None)
             nxt1 = next(gnrt, None)
 
@@ -89,6 +108,42 @@ class ASTNode:
         logger.debug("Learn " + str(ctr))
         SmtEnumerator.non_learned += 1
         raise BadSkeletonException
+
+    def add_constraint(self):
+        def encode_property(prop_expr):
+            def get_z3_var(id, pname: str, ptype: example_smt.ExprType):
+                node_id = id
+                var_name = '{}_n{}'.format(pname, node_id)
+                if ptype is example_smt.ExprType.INT:
+                    return z3.Int(var_name)
+                elif ptype is example_smt.ExprType.BOOL:
+                    return z3.Bool(var_name)
+                elif ptype is example_smt.ExprType.REAL:
+                    return z3.Real(var_name)
+                else:
+                    raise RuntimeError('Unrecognized ExprType: {}'.format(ptype))
+            pname = prop_expr.name
+            pty = prop_expr.type
+            if str(prop_expr).find("ret") != -1:
+                return get_z3_var(self.id, pname, pty)
+            else:
+                arg_n = str(prop_expr).find("arg")
+                id = int(str(prop_expr)[arg_n + 3:-1])
+                return get_z3_var(self.children[id].id, pname, pty)
+
+        constraint_visitor = example_smt.ConstraintVisitor(encode_property)
+        for index, constraint in enumerate(self.production.constraints):
+            z3_clause = constraint_visitor.visit(constraint)
+            ASTNode.solver.add(z3_clause)
+
+    def add_concrete_constraint(self, table, evaluator):
+        rows = 'row_n{}'.format(self.id)
+        cols = 'col_n{}'.format(self.id)
+        groups = 'groups_n{}'.format(self.id)
+
+        ASTNode.solver.add(z3.Int(rows) == evaluator.eval_rows(table))
+        ASTNode.solver.add(z3.Int(cols) == evaluator.eval_cols(table))
+        ASTNode.solver.add(z3.Int(groups) == evaluator.eval_groups(table))
 
 
 class WrapProduction:
@@ -346,8 +401,6 @@ class SmtEnumerator(FromIteratorEnumerator):
         self.z3_solver.add(ctr)
 
     def buildSkeleton(self):
-        global first
-        first = True
         SmtEnumerator.skeleton_attempts += 1
         result = [0] * len(self.model)
         for var in self.variables:
@@ -365,7 +418,7 @@ class SmtEnumerator(FromIteratorEnumerator):
         self.tree.tyrell_spec = self.tyrell_spec
         programs = self.tree.dfs_dynamic(self.evaluator)
         program = next(programs, None)
-        first = False
+        self.decider.active = True
         while program is not None:
             builder = D.Builder(self.tyrell_spec)
             #[print(v) for v in self.program_to_linear(program[0])]
@@ -376,6 +429,8 @@ class SmtEnumerator(FromIteratorEnumerator):
             #print(self.program2tree)
             yield self.visit_this(program[1][0], builder)
             program = next(programs, None)
+            self.decider.active = False
+
 
 
     def visit_this(self, lst, builder):

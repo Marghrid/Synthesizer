@@ -68,7 +68,6 @@ class Synthesizer(ABC):
                 pass
         logger.info("Number of attempts {}".format(Synthesizer._num_attempts))
         logger.info("Number of solutions {}".format(Synthesizer._num_solutions))
-        logger.info("Selected solution {}".format(solution[1]))
         logger.debug(
             'Enumerator is exhausted after {} attempts'.format(Synthesizer._num_attempts))
-        return None
+        return solution[1]
