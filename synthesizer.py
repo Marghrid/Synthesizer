@@ -210,7 +210,7 @@ class RInterpreter(PostOrderInterpreter):
             ret_val = robjects.r(_script)
             return ret_df_name
         except:
-            logger.error('Error in interpreting top_n...')
+            logger.error('Error in interpreting plain_top_n...')
             raise GeneralError()
 
     def eval_top_n(self, node, args):
