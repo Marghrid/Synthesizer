@@ -231,6 +231,17 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting filter...')
             raise GeneralError()
 
+    def eval_gather(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- gather({table}, key, value)'.format(
+                   ret_df=ret_df_name, table=args[0])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting gather...')
+            raise GeneralError()
+
     def apply_row(self, val):
         df = val
         if isinstance(val, str):
@@ -442,6 +453,10 @@ class Evaluator:
                             cnsts = [fn, tab.columns[i].name]
                             res = self.interpreter.eval_filter(None, [table] + cnsts)
                             yield res, cnsts
+            elif str(prod).find("gather") != -1:
+                res = self.interpreter.eval_gather(None, [table])
+                yield res, []
+
             self.prev_column = None
 
     def eval_rows(self, table):
@@ -509,6 +524,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('DEBUG')
+    logger.setLevel('INFO')
     main()
 
