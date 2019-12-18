@@ -82,8 +82,6 @@ def eq_r(actual, expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
-    #logger.info(tab1)
-    #logger.info(tab2)f
     return tab1 == tab2
 
 
@@ -248,7 +246,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_gather(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- gather({table}, key, value)'.format(
+        _script = '{ret_df} <- {table} %>% drop_na %>% gather(key, value)'.format(
                    ret_df=ret_df_name, table=args[0])
         try:
             ret_val = robjects.r(_script)

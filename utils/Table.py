@@ -229,7 +229,7 @@ class Column:
                 return False
         else:
             self.norm = 0
-            return True
+            return False
 
     def eval_elements(self):
         try:
