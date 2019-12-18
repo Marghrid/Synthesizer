@@ -155,7 +155,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_count(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <-  summarize({table}, n=n())\n' \
+        _script = '{ret_df} <-  {table} %>% summarize(n=n())\n' \
                   '{ret_df}$n <- as.numeric({ret_df}$n)'.format(
                    ret_df=ret_df_name, table=args[0])
         try:
@@ -394,7 +394,7 @@ class Evaluator:
                 group_vars = list(group_vars)
                 for i in range(n_cols):
                     if tab.columns[i].type == "numeric" and tab.columns[i].name not in group_vars:
-                        for op in ["max", "min", "mean", "median"]:
+                        for op in ["max", "min", "sum", "mean", "median"]:
                             self.prev_column = 2
                             res = self.interpreter.eval_summarise(None, [table, op, tab.columns[i].name])
                             yield res, [op, i+1]
@@ -439,7 +439,7 @@ class Evaluator:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":
                         cnsts = [tabs['output'].n_rows, tab.columns[i].name]
-                        res = self.interpreter.eval_top_n(None, [table] + cnsts)
+                        res = self.interpreter.eval_plain_top_n(None, [table] + cnsts)
                         yield res, cnsts
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):

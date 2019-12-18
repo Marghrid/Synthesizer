@@ -67,9 +67,9 @@ func filter: Table r -> Table a, Const b, Const c {
 }
 
 func gather: Table r -> Table a {
-  col(r) <= col(a);
-  row(r) >= row(a);
-  groups(r) == groups(a);
+  col(r) < col(a);
+  row(r) > row(a);
+  groups(r) > groups(a);
 }
 
 
@@ -95,4 +95,4 @@ predicate order_restriction(bottom_n, mutate); # bottom_n => count or summarize 
 predicate only_at_root(top_n);
 predicate only_at_root(bottom_n);
 
-predicate must_occur(group_by);
+predicate must_occur(group_by);GIT

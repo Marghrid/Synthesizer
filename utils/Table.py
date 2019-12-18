@@ -127,7 +127,7 @@ class Table:
         other_column = other.columns[1]
         self_column = self.columns[1]
 
-        if other_column.matches(self_column, other.max_input):
+        if other_column.matches(self_column, other.max_input) or (other_column.values == [] and self_column == []):
             Table.last_norm = other_column.norm
             return True
         return False
@@ -218,8 +218,8 @@ class Column:
         return min(lst)
 
     def matches(self, other, maximum):
-        if self.type == "float":
-            if other.type == "float":
+        if self.type == "float" or self.type == "numeric":
+            if other.type == "float" or self.type == "numeric":
                 a1 = np.array(self.values)
                 a2 = np.array(other.values)
                 self.norm = LA.norm(np.subtract(a1/maximum, a2/maximum), ord=1)
