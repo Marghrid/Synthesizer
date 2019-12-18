@@ -202,6 +202,17 @@ class RInterpreter(PostOrderInterpreter):
             logger.error('Error in interpreting mutate...')
             raise GeneralError()
 
+    def eval_plain_top_n(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- {table} %>% top_n({number}, `{col}`)'.format(
+                  ret_df=ret_df_name, table=args[0], number=args[1], col=args[2])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting top_n...')
+            raise GeneralError()
+
     def eval_top_n(self, node, args):
         ret_df_name = get_fresh_name()
         _script = '{ret_df} <- {table} %>% top_n({number}, `{col}`) %>% arrange(desc({col}))'.format(
@@ -426,6 +437,12 @@ class Evaluator:
                                 cnsts = [tab.columns[i].name, op, tab.columns[i].name]
                                 res = self.interpreter.eval_mutate(None, [table] + cnsts)
                                 yield res, cnsts
+            elif str(prod).find("plain_top_n") != -1:
+                for i in range(tab.n_cols):
+                    if tab.columns[i].type == "numeric":
+                        cnsts = [tabs['output'].n_rows, tab.columns[i].name]
+                        res = self.interpreter.eval_top_n(None, [table] + cnsts)
+                        yield res, cnsts
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":

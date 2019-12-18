@@ -48,6 +48,12 @@ func bottom_n: Table r -> Table a, Const b, Const c {
   groups(r) < groups(a);
 }
 
+func plain_top_n: Table r -> Table a, Const b, Const c {
+  col(r) == col(a);
+  row(r) < row(a);
+  groups(r) < groups(a);
+}
+
 func mutate: Table r -> Table a, Const b, Const c, Const d {
   col(r) >= col(a);
   row(r) == row(a);
