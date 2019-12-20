@@ -38,14 +38,14 @@ func count: Table r -> Table a {
 
 func top_n: Table r -> Table a, Const b, Const c {
   col(r) == col(a);
-  row(r) < row(a);
-  groups(r) < groups(a);
+  row(r) <= row(a);
+  groups(r) <= groups(a);
 }
 
 func bottom_n: Table r -> Table a, Const b, Const c {
   col(r) == col(a);
-  row(r) < row(a);
-  groups(r) < groups(a);
+  row(r) <= row(a);
+  groups(r) <= groups(a);
 }
 
 func plain_top_n: Table r -> Table a, Const b, Const c {

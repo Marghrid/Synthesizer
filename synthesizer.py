@@ -540,6 +540,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('INFO')
+    logger.setLevel('DEBUG')
     main()
 
