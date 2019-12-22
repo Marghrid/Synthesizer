@@ -377,7 +377,7 @@ class Evaluator:
                 return
             elif str(prod).find("group_by") != -1:
                 n_cols = tab.n_cols
-                if self.prev_column is not None:
+                if self.prev_column is not None and tab.n_cols > 2:
                     cnsts = [tab.columns[self.prev_column - 1].name]
                     res = self.interpreter.eval_group_by(None, [table] + cnsts)
                     yield res, cnsts
@@ -540,6 +540,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('INFO')
+    logger.setLevel('DEBUG')
     main()
 

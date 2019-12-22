@@ -94,5 +94,6 @@ predicate order_restriction(bottom_n, mutate); # bottom_n => count or summarize 
 
 predicate only_at_root(top_n);
 predicate only_at_root(bottom_n);
+predicate only_at_root(plain_top_n);
 
 predicate must_occur(group_by);
