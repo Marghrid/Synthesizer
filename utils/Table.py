@@ -223,7 +223,7 @@ class Column:
                 a1 = np.array(self.values)
                 a2 = np.array(other.values)
                 self.norm = LA.norm(np.subtract(a1/maximum, a2/maximum), ord=1)
-                return self.norm <= 0.10 * len(a1)
+                return self.norm <= 0.15 * len(a1)
             else:
                 self.norm = 0
                 return False

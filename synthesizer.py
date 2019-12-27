@@ -246,7 +246,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_gather(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% drop_na %>% gather(key, value)'.format(
+        _script = '{ret_df} <- {table} %>% gather(key, value) %>% drop_na'.format(
                    ret_df=ret_df_name, table=args[0])
         try:
             ret_val = robjects.r(_script)
@@ -254,6 +254,18 @@ class RInterpreter(PostOrderInterpreter):
         except:
             logger.error('Error in interpreting gather...')
             raise GeneralError()
+
+    def eval_drop_na(self, node, args):
+        ret_df_name = get_fresh_name()
+        _script = '{ret_df} <- {table} %>% drop_na'.format(
+                   ret_df=ret_df_name, table=args[0])
+        try:
+            ret_val = robjects.r(_script)
+            return ret_df_name
+        except:
+            logger.error('Error in interpreting gather...')
+            raise GeneralError()
+
 
     def apply_row(self, val):
         df = val
@@ -377,7 +389,7 @@ class Evaluator:
                 return
             elif str(prod).find("group_by") != -1:
                 n_cols = tab.n_cols
-                if self.prev_column is not None and tab.n_cols > 2:
+                if self.prev_column is not None:
                     cnsts = [tab.columns[self.prev_column - 1].name]
                     res = self.interpreter.eval_group_by(None, [table] + cnsts)
                     yield res, cnsts
@@ -463,6 +475,7 @@ class Evaluator:
                         cnsts = [fn, tab.columns[i].name]
                         res = self.interpreter.eval_filter(None, [table] + cnsts)
                         yield res, cnsts
+
                     if tab.columns[i].type == "character":
                         for fn in ["!empty_string"]:
                             self.prev_column = i + 1
@@ -472,6 +485,7 @@ class Evaluator:
             elif str(prod).find("gather") != -1:
                 res = self.interpreter.eval_gather(None, [table])
                 yield res, []
+
 
             self.prev_column = None
 
@@ -540,6 +554,6 @@ def main():
 
 
 if __name__ == '__main__':
-    logger.setLevel('DEBUG')
+    logger.setLevel('INFO')
     main()
 

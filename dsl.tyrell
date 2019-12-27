@@ -63,7 +63,7 @@ func mutate: Table r -> Table a, Const b, Const c, Const d {
 func filter: Table r -> Table a, Const b, Const c {
   col(r) == col(a);
   row(r) < row(a);
-  groups(r) == groups(a);
+  groups(r) <= groups(a);
 }
 
 func gather: Table r -> Table a {
@@ -71,6 +71,7 @@ func gather: Table r -> Table a {
   row(r) > row(a);
   groups(r) > groups(a);
 }
+
 
 
 #Hard constraints
