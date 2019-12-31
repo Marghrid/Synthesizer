@@ -78,10 +78,12 @@ def quotezise(string):
 
 
 def eq_r(actual, expect):
+    global number
     if build_incomplete_tab(actual) != build_incomplete_tab(expect):
         return False
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
+    number += 1
     return tab1 == tab2
 
 
@@ -501,6 +503,7 @@ class Evaluator:
 
 
 def main():
+    global number
     parser = argparse.ArgumentParser()
     parser.add_argument('-i0', '--input0', type=str)
     parser.add_argument('-o', '--output', type=str)
@@ -546,6 +549,7 @@ def main():
     logger.info('Synthesizing programs...')
     synthesizer.set_table(Table)
     prog = synthesizer.synthesize()
+    logger.info('Number of candidates: {}'.format(number))
     if prog is not None:
         logger.info('Selected solution: {}'.format(prog))
     else:
