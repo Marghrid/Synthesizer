@@ -40,5 +40,5 @@ Q[13] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q13-input-bikes.csv 
 Q[17] = "python3 synthesizer.py -i0 benchmarks/input_tables/Q17-input-work.csv -o benchmarks/noisy_output_tables/Q17-output-nn-work.csv -l 2 -d 3 -t dsl.tyrell -m 250"
 
 for i in range(55):
-    if i not in Q:
-        print(i)
+    if i in Q:
+        print(Q[i])
