@@ -61,7 +61,7 @@ for name in benchmarks:
         args = template.replace('INPUT', name)
         args = args.replace('MAX', str(benchmarks[name][0]))
         args = args.replace('LINES', str(i))
-        args = args.replace('DEPTH', str(i+1))
+        args = args.replace('DEPTH', str(i + 1))
 
         string = name[name.find('input_tables/Q') + len('input_tables/Q'):]
         first, second = string[0], string[1]
@@ -73,12 +73,5 @@ for name in benchmarks:
 
         output = next(filter(lambda x: query in x, outputs))
         args = args.replace('OUTPUT', output)
-        output = subprocess.check_output(args.split())
-        output = output.decode('utf-8')
-        n_bars, values = eval(output)
-        bars = [('bar{}'.format(i), values[i]) for i in range(n_bars)]
-        with open('NN/' + name.replace('.png', '-nn.csv'), "a+") as f:
-            print('{},{}'.format('col0', 'col1'), file=f)
-            for bar in bars:
-                print('{},{}'.format(bar[0], bar[1]), file=f)
-
+        with open('results/' + query[:-1] + '_depth{}'.format(i) + '.txt', 'a+') as err:
+            subprocess.Popen(args.split(), stderr=err).wait()
