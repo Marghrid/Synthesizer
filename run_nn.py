@@ -23,7 +23,7 @@ benchmarks = {'Q1-flight_delays_out.png': [45, 12],
               'Q20-instacart_out.png': [1, 2],
               'Q21-crimes-in-boston_out.png': [40500, 10],
               'Q22-immigrants_by_nationality_out.png': [6695, 10],
-               #23
+              'Q23-deaths-barcelona_out.png': [8120, 11],
               'Q24-population-barcelona_out.png': [70, 2],
                #25
               'Q26-youtube-traffic_out.png': [115, 10],
