@@ -28,13 +28,13 @@ benchmarks = { #1
               'benchmarks/input_tables/Q20-instacart.csv': [1, 3, 4],
               'benchmarks/input_tables/Q21-crimes-in-boston.csv': [40500, 3, 4],
               'benchmarks/preprocessed_input_tables/Q22-immigrants_by_nationality.csv': [6695, 3, 4],
-              'benchmarks/preprocessed_input_tables/Q23-deaths-barcelona.csv': [1, 3, 4],
+              'benchmarks/preprocessed_input_tables/Q23-deaths-barcelona.csv': [8120, 3, 4],
               'benchmarks/input_tables/Q24-population-barcelona.csv': [70, 3, 4],
                #25
               'benchmarks/input_tables/Q26-youtube-traffic.csv': [115, 3, 4],
               'benchmarks/input_tables/Q27-youtube-traffic.csv': [5140, 3, 4],
               'benchmarks/input_tables/Q28-youtube-traffic.csv': [15100, 4, 5],
-              'benchmarks/input_tables/Q29-youtube-traffic_out.png': [535, 3, 4],
+              'benchmarks/input_tables/Q29-youtube-traffic.csv': [535, 3, 4],
               'benchmarks/preprocessed_input_tables/Q30-wine-input.csv': [90, 4, 5],
                #31
                #32
@@ -49,7 +49,7 @@ benchmarks = { #1
               'benchmarks/input_tables/Q41-gun-violence.csv': [355, 3, 4],
               'benchmarks/input_tables/Q42-employee.csv': [615, 2, 3],
               'benchmarks/input_tables/Q43-employee.csv': [3170, 2, 3],
-              'benchmarks/input_tables/Q44-employee.csv': [735, 3, 4],
+              'benchmarks/input_tables/Q44-members.csv': [735, 3, 4],
               'benchmarks/input_tables/Q45-members.csv': [430, 3, 4],
               'benchmarks/input_tables/Q46-members.csv': [1020, 2, 3],
               'benchmarks/input_tables/Q47-members.csv': [1590, 2, 3],

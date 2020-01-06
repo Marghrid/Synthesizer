@@ -215,7 +215,7 @@ class RInterpreter(PostOrderInterpreter):
 
     def eval_top_n(self, node, args):
         ret_df_name = get_fresh_name()
-        _script = '{ret_df} <- {table} %>% top_n({number}, `{col}`) %>% arrange(desc({col}))'.format(
+        _script = '{ret_df} <- {table} %>% top_n({number}, `{col}`) %>% arrange(desc(`{col}`))'.format(
                   ret_df=ret_df_name, table=args[0], number=args[1], col=args[2])
         try:
             ret_val = robjects.r(_script)
