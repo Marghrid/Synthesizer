@@ -11,7 +11,7 @@ benchmarks = { #1
               'benchmarks/input_tables/Q3-consumer_complaints.csv': [221000, 3, 4],
               'benchmarks/input_tables/Q4-health-facilities-gh.csv': [735, 3, 4],
               'benchmarks/preprocessed_input_tables/Q5-grades.csv': [225, 4, 5],
-              'benchmarks/input_tables/Q6-input-avocado.csv': [2, 3, 4],
+              'benchmarks/input_tables/Q6-input-avocado.csv': [2, 2, 3],
               'benchmarks/input_tables/Q7-input-avocado.csv': [6200000000, 2, 3],
               'benchmarks/preprocessed_input_tables/Q8-input-avocado.csv': [1330000000, 3, 4],
               'benchmarks/preprocessed_input_tables/Q9-input-titanic.csv': [270, 2, 3],
