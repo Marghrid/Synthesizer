@@ -64,6 +64,7 @@ benchmarks = { #1
               }
 
 for name in benchmarks:
+    queue = []
     for i in range(2, MAX_LOC):
         args = template.replace('INPUT', name)
         args = args.replace('MAX', str(benchmarks[name][0]))
@@ -82,4 +83,6 @@ for name in benchmarks:
         args = args.replace('OUTPUT', output)
         print(args)
         with open('results/' + query[:-1] + '_depth{}'.format(i) + '.txt', 'a+') as err:
-            subprocess.Popen(args.split(), stderr=err).wait()
+            queue += [subprocess.Popen(args.split(), stderr=err)]
+    for process in queue:
+        process.wait()
