@@ -24,7 +24,7 @@ benchmarks = { #1
               'benchmarks/preprocessed_input_tables/Q16-input-bank.csv': [4605, 2, 3],
               'benchmarks/input_tables/Q17-input-work.csv': [250, 2, 3],
                #18
-              'benchmarks/preprocessed_input_tables/Q19-input-work.csv': [6180, 2, 3],
+               #19 'benchmarks/preprocessed_input_tables/Q19-input-work.csv': [6180, 2, 3],
               'benchmarks/input_tables/Q20-instacart.csv': [1, 3, 4],
               'benchmarks/input_tables/Q21-crimes-in-boston.csv': [40500, 3, 4],
               'benchmarks/preprocessed_input_tables/Q22-immigrants_by_nationality.csv': [6695, 3, 4],
@@ -80,5 +80,6 @@ for name in benchmarks:
 
         output = next(filter(lambda x: query in x, outputs))
         args = args.replace('OUTPUT', output)
+        print(args)
         with open('results/' + query[:-1] + '_depth{}'.format(i) + '.txt', 'a+') as err:
             subprocess.Popen(args.split(), stderr=err).wait()

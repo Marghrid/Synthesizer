@@ -47,6 +47,7 @@ class Synthesizer(ABC):
         while prog is not None:
             Synthesizer._num_attempts += 1
             logger.debug('Enumerator generated: {}'.format(prog))
+            logger.info("Attempts " + str(Synthesizer._num_attempts))
             try:
                 res = self._decider.analyze(prog)
                 if res.is_ok():
