@@ -450,11 +450,12 @@ class Evaluator:
                                 res = self.interpreter.eval_mutate(None, [table] + cnsts)
                                 yield res, cnsts
             elif str(prod).find("plain_top_n") != -1:
-                for i in range(tab.n_cols):
-                    if tab.columns[i].type == "numeric":
-                        cnsts = [tabs['output'].n_rows, tab.columns[i].name]
-                        res = self.interpreter.eval_plain_top_n(None, [table] + cnsts)
-                        yield res, cnsts
+                if tabs['output'].n_rows != tab.n_rows:
+                    for i in range(tab.n_cols):
+                        if tab.columns[i].type == "numeric":
+                            cnsts = [tabs['output'].n_rows, tab.columns[i].name]
+                            res = self.interpreter.eval_plain_top_n(None, [table] + cnsts)
+                            yield res, cnsts
             elif str(prod).find("top_n") != -1:
                 for i in range(tab.n_cols):
                     if tab.columns[i].type == "numeric":

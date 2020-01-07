@@ -20,7 +20,7 @@ func empty: Empty -> Empty;
 
 func summarise: Table r -> Table a, Const b, Const c {
   col(r) <= col(a);
-  row(r) == groups(a);
+  row(r) <= groups(a);
   groups(r) == groups(a);
 }
 
