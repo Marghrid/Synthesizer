@@ -84,6 +84,7 @@ def eq_r(actual, expect):
     tab1 = build_tab(actual)
     tab2 = build_tab(expect)
     number += 1
+    logger.info(number)
     return tab1 == tab2
 
 
